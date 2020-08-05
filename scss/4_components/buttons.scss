@@ -1,0 +1,51 @@
+//-------------------Buttons----------------------------------//
+.button,
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  padding: 5px $padding;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    // border-color: $grey-dark;
+    outline: 0;
+    // background-color: $grey-light;
+  }
+
+  &:active {
+    outline: 0;
+  }
+}
+// .btn,
+// .button {
+//   &-l {
+//     background-color: $grey-light;
+//     color: $black;
+//   }
+//   &-d {
+//     background-color: $black;
+//     color: $grey-light;
+//   }
+// }
+
+.btn {
+  // padding: 0.6em 0.8em 0.8em;
+  border: none;
+  border-radius: 5px;
+  // box-shadow: inset 0 -0.2em 8px -4px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 0.2em 5px rgba(0, 0, 0, 0.2);
+  // outline: none;
+  transition: 0.2s;
+}
+
+.btn:active {
+  box-shadow: inset 0 0.3em 8px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}

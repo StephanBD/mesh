@@ -1,0 +1,16 @@
+
+.zoom-effect {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  margin-top: -2em;
+  &:hover img,
+  &:hover {
+    transform: scale(1);
+    z-index: 100;
+  }
+  & img {
+    transition: transform 0.2s ease-in;
+    image-rendering: crisp-edges;
+  }
+}

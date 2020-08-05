@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../dist/main.css">
+</head>
+
+<body class=" bg-black flex-column">
+
+
+
+
+  <header class="full-w bg-grey-light relative m-b">
+    <div class="content  col col--1-3   m-a center-m  bg-grey p-x">
+      <h6 class="center ">Title 3</h6>
+      <ul class="flex-row   hide-down-t  between ">
+        <li class="btn">Home 2</li>
+        <li class="btn">About</li>
+        <li class="btn">Contact</li>
+        <li class="btn">Shop</li>
+      </ul>
+      <button class="  hide-t" id="toggle">Menu</button>
+      <div class="absolute-bottom hide    t-center full-w bg-black ">
+        <li class="btn t-w round-circle ">Home</li>
+        <li class="btn t-w ">About</li>
+        <li class="btn t-w ">Contact</li>
+        <li class="btn t-w ">Shop</li>
+      </div>
+    </div>
+  </header>
+
+  <!------------------------------------------------>
+
+  <div class="content m-a col col--1-2 gap m-y-2 ">
+
+
+    <section class="bg-grey-light p ">
+      section
+      <header class="bg-grey m-b">header 1</header>
+
+      article
+      <article class="bg-grey-dark col col-two  t-center m-b">
+        <header class="bg-black-t col col-item-full">header</header>
+        <div class="bg-black-t col col-item full">div</div>
+        <aside class="bg-black-t col col-item">aside</aside>
+        <p class="bg-black-t col col-item-full m-none">lorem</p>
+      </article>
+
+      article
+      <article class="bg-grey-dark  col col center ">
+
+        <header>header</header>
+        <div>div</div>
+        <p>p</p>
+      </article>
+
+      <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid neque culpa aut doloremque at nihil nobis
+        obcaecati voluptates perspiciatis? Laborum fuga quas earum reiciendis dolore deserunt excepturi alias voluptas
+        modi!</div>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio voluptates quia, accusamus pariatur
+        repellendus architecto quod, nobis eos eaque adipisci assumenda ut inventore neque mollitia temporibus ad
+        consequatur? Officia, ullam?</p>
+    </section>
+    <!----------------------------------->
+    <section class="bg-grey-light p col-1 row-1 ">
+      section
+      <nav class="bg-grey">nav</nav>
+      <aside class="bg-grey m-t">aside</aside>
+    </section>
+
+  </div>
+  <!------------------------------------------------>
+  <footer class="bg-grey-light  m-x-a  p m-t full-w">
+    <div class="content bg-grey m-x-a">footer</div>
+  </footer>
+
+
+
+
+  <script>// safe code
+    // ; complete useful
+    (function (global) {
+      // "new" an object
+      var MiDom = function (node, create) {
+        return new MiDom.init(node, create);
+      };
+
+      //-----------------------------------------------------//
+      // hidden within the scope of the IIFE and never directly accessible
+      // var supportedlangs = ["en", "es"]
+
+      //-----------------------------------------------------//
+      // prototype holds methods (to save memory space)
+
+      MiDom.prototype = {
+        //-----------------------------------------------------//
+        createE: function (element = "div", create = true) {
+          // console.log(element.includes("."));
+          try {
+            if ((!element.includes(".") && !element.includes("#")) || create)
+              return (this.node = document.querySelector(element));
+            else return document.createElement(element);
+          } catch (error) {
+            this.error("createE", element);
+          }
+        },
+
+        queryS: (element = "div") => {
+          try {
+            return document.querySelector(element);
+          } catch (error) {
+            this.error("createE", element);
+          }
+        },
+        queryChild: (element = "div") => {
+          try {
+            return this.node.querySelector(element);
+          } catch (error) {
+            this.error("createE", element);
+          }
+        },
+
+        //-----------------------------------------------------//
+        appendC: function (where = "body") {
+          try {
+            if (typeof where === "object")
+              where.node
+                ? where.node.appendChild(this.node)
+                : where.appendChild(this.node);
+            else this.queryS(where).appendChild(this.node);
+            return this;
+          } catch (error) {
+            this.error("appendC", where);
+          }
+        },
+
+        innerH: function (text = "") {
+          try {
+            if (this.node.value === undefined) this.node.innerHTML = text;
+            // input, textarea, option
+            else this.node.value = text;
+            return this;
+          } catch (error) {
+            this.error("appendC", text);
+          }
+        },
+
+        addE: function (func, event = "click", scope = true) {
+          this.node.addEventListener(event, func, scope);
+          return this;
+        },
+
+        //-----------------------------------------------------//
+
+        styleT: function (styles) {
+          this.node.style.cssText = styles;
+          return this;
+        },
+
+        addId: function (id) {
+          this.node.id = id;
+          return this;
+        },
+
+        // sobre escribe
+        classL: function (clase) {
+          this.node.classList = clase;
+          return this;
+        },
+
+        // agrega
+        addC: function () {
+          for (var i = 0; i < arguments.length; i++) {
+            this.node.classList.add(arguments[i]);
+          }
+          return this;
+        },
+        removeC: function (clase) {
+          this.node.classList.remove(clase);
+          return this;
+        },
+        classTg: function (clase) {
+          this.node.classList.toggle(clase);
+          return this;
+        },
+        replace: function (clase, whit) {
+          this.node.classList.replace(clase, whit);
+          return this;
+        },
+
+        setSty: function (property, value) {
+          this.node.style[property] = value;
+          return this;
+        },
+        setAtt: function (att, value) {
+          this.node.setAttribute(att, value);
+          return this;
+        },
+        removeA: function (att) {
+          this.node.removeAttribute(att);
+          return this;
+        },
+
+        value: function () {
+          return this.node.value;
+        },
+        content: function () {
+          return this.node.textContent;
+        },
+
+        error: function (message, item) {
+          console.error(message);
+          if (item) console.log(item);
+          return this;
+        },
+
+        insertFn: function (fn) {
+          fn(this);
+          return this;
+        },
+
+        destroy: function () {
+          delete this.node;
+        },
+
+        removeChild: function (child) {
+          this.node.removeChild(child);
+          return this;
+        },
+        removeChild: function (nuevo, old) {
+          this.node.replaceChild(nuevo, old);
+          return this;
+        },
+
+        repeat: function (self) {
+          for (let i = 1; i <= num; i++) {
+            log(i);
+            this.createE(self[0]);
+            this.innerH(self[1]);
+            this.appendC();
+          }
+        },
+
+        pre: function (text, where = "body") {
+          let pre = this.createE("pre");
+          pre.innerHTML = JSON.stringify(text);
+          this.queryS(where).appendChild(pre);
+          return this;
+        },
+      };
+
+      //-----------------------------------------------------//
+      // the actual object is created here, allowing us to 'new' an object without calling 'new'
+      MiDom.init = function (node, create = true) {
+        var self = this;
+        self.node = node ? this.createE(node) : "";
+      };
+
+      // trick borrowed from jQuery so we don't have to use the 'new' keyword
+      MiDom.init.prototype = MiDom.prototype;
+
+      // attach our MiDom to the global object, and provide a shorthand '$G' for ease our poor fingers
+      global.$ = global.MiDom = MiDom;
+    })(window);
+
+    $("#toggle").addE(function () {
+      this.parentNode.querySelector("div").classList.toggle("hide");
+    });
+  </script>
+
+</body>
+
+</html>

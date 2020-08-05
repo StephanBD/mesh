@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../dist/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../dist/main.css">
+  <!-- icons -->
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<!--*********************body*********************-->
+
+<body id="body" class="nav-p-l nav-p-r  ">
+  <!-----------------------sidebar left----------------------->
+
+  <div class="sidebar-left" id="navbar-left">
+    <nav class="nav t-white">
+      <div>
+        <li href="#" class="nav__logo ">
+          <span class="nav__logo-text">Bedimcode</span>
+        </li>
+
+        <ul class="nav__list ">
+          <li href="#" class="nav__link">
+            <i class='bx bx-grid-alt nav__icon'></i>
+            <span class="nav__text">Home</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-user nav__icon'></i>
+            <span class="nav__text">User</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-bell nav__icon'></i>
+            <span class="nav__text">Notification</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-heart nav__icon'></i>
+            <span class="nav__text">Favorites</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-bookmark nav__icon'></i>
+            <span class="nav__text">Saved</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-message-rounded nav__icon'></i>
+            <span class="nav__text">Chat</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-black-t">xx</div>
+    </nav>
+  </div>
+  <!-----------------------sidebar right----------------------->
+  <div class="sidebar-right p shadow-l" id="navbar-right">
+    <nav class="nav t-white">
+      <div>
+        <li href="#" class="nav__logo ">
+          <span class="nav__logo-text">Bedimcode</span>
+        </li>
+
+        <ul class="nav__list ">
+          <li href="#" class="nav__link">
+            <i class='bx bx-grid-alt nav__icon'></i>
+            <span class="nav__text">Home</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-user nav__icon'></i>
+            <span class="nav__text">User</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-bell nav__icon'></i>
+            <span class="nav__text">Notification</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-heart nav__icon'></i>
+            <span class="nav__text">Favorites</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-bookmark nav__icon'></i>
+            <span class="nav__text">Saved</span>
+          </li>
+          <li href="#" class="nav__link">
+            <i class='bx bx-message-rounded nav__icon'></i>
+            <span class="nav__text">Chat</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-black-t">xx</div>
+    </nav>
+  </div>
+  <!-----------------------content----------------------->
+  <div class="content-a ">
+    <h2>Unete al canal</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Atque optio odio officiis nostrum nesciunt quam libero.
+      Cumque impedit veritatis, quibusdam nulla accusantium illo.
+      In velit laboriosam obcaecatixxxx quaerat eaque beatae.</p>
+    <div class="nav__toggle" id="nav-toggle-left">
+      <i class="bx bxs-chevron-left"></i>
+    </div>
+    <span>left</span>
+    <br>
+    <div class="nav__toggle" id="nav-toggle-right">
+      <i class="bx bxs-chevron-right"></i>
+    </div>
+    <span>right</span>
+  </div>
+</body>
+<script>
+
+  // show menu
+  const showMenu = (toggleId, navbarId, to) => {
+    const
+      toggle = document.getElementById(toggleId),
+      navbar = document.getElementById(navbarId),
+      bodypadding = document.getElementById("body")
+
+    if (toggle && navbar) {
+      toggle.addEventListener("click", () => {
+        console.log("click");
+        navbar.classList.toggle("show")
+        bodypadding.classList.toggle(to)
+      })
+    }
+  }
+
+  showMenu("nav-toggle-right", "navbar-right", "expand-right")
+  showMenu("nav-toggle-left", "navbar-left", "expand-left")
+
+
+</script>
+
+</html>

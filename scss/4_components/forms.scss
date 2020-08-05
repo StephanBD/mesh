@@ -1,0 +1,173 @@
+
+//-------------------Forms----------------------------------//
+// input[type="radio"],
+// input[type="reset"],
+// input[type="checkbox"],
+// input[type="submit"],
+// input[type="hidden"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="file"],
+input[type="image"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="range"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea,
+select {
+  box-sizing: border-box;
+  // height: 38px;
+  padding: 5px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: $white;
+  border: none;
+  border: 1px solid $input-line;
+  // border-radius: $border-radius;
+  width: 100%;
+  // max-width: 100%;
+  // display: block;
+  &::placeholder,
+  &-ms-input-placeholder,
+  &::-ms-input-placeholder {
+    color: $grey-light;
+    font-weight: $italic;
+  }
+  margin-top: $margin / 2;
+  margin-bottom: $margin / 2;
+}
+input[type="range"] {
+  padding: 0;
+}
+// /* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="range"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+textarea {
+  min-height: $paragraph * 3;
+  min-width: 100%;
+  max-width: 100%;
+  // padding-top: 6px;
+  // padding-bottom: 6px;
+}
+input:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid $input-line-focus;
+  outline: none;
+}
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+//-------------------checkbox----------------------------------//
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin: 0 $margin / 2;
+}
+
+//-------------------label----------------------------------//
+label {
+  display: inline-block;
+  font-weight: $normal;
+  cursor: pointer;
+}
+
+//-------------------range----------------------------------//
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+  border-radius: 50px;
+  -webkit-appearance: none;
+  cursor: pointer;
+  // border: 1px solid $grey-light;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: $grey;
+  width: 20px;
+  height: 20px;
+  // border: 3px solid transparent;
+  border-radius: 50%;
+}
+input[type="range"]:focus {
+  // border: none;
+  // border-bottom: 1px solid $grey;
+  outline: none;
+}
+
+//-------------------color----------------------------------//
+$height-box: 25px;
+input[type="color"] {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  position: relative;
+  border-radius: 50%;
+  height: $height-box;
+  cursor: pointer;
+}
+// input[type="color"]::after {
+//   content: "\025bc";
+//   position: absolute;
+//   display: inline-block;
+//   height: $height-box - 7.5px;
+//   top: 50%;
+//   left: 0;
+//   transform: translate(0, -50%);
+//   color: $white;
+//   background-color: $grey-dark;
+//   // font-size: 10px;
+
+// }
+
+//-------------------file----------------------------------//
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+input[type="file"]::before {
+  content: "Select some files";
+  display: inline-block;
+  background: $white;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  // text-shadow: 1px 1px #fff;
+  // font-weight: 700;
+  // font-size: 10pt;
+}
+input[type="file"]:hover::before {
+  border-color: $black;
+  background-color: $grey-light;
+}
+input[type="file"]:active::before {
+  background: $white;
+}

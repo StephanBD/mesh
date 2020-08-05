@@ -1,0 +1,207 @@
+// colors
+$primary: red;
+$secondary: blue;
+$terciary: yellow;
+$quaternary: green;
+
+$colors: (
+  primary: red,
+  secondary: blue,
+  terciary: yellow,
+  quaternary: green,
+);
+
+$notifiers: (
+  primary: #007bff,
+  secondary: #6c757d,
+  success: #28a745,
+  info: #17a2b8,
+  warning: #ffc107,
+  danger: #dc3545,
+  light: #f8f9fa,
+  dark: #343a40,
+);
+
+// darken
+$primary-dark: darken($primary, 10%);
+$secondary-dark: darken($secondary, 10%);
+$terciary-dark: darken($terciary, 10%);
+$quaternary-dark: darken($quaternary, 10%);
+
+// lighten
+$primary-dark: lighten($primary, 10%);
+$secondary-dark: lighten($secondary, 10%);
+$terciary-dark: lighten($terciary, 10%);
+$quaternary-dark: lighten($quaternary, 10%);
+
+// white to black
+$white: rgb(240, 240, 240);
+$grey-light: rgb(199, 199, 199);
+$grey: rgb(138, 138, 138);
+$grey-dark: rgb(82, 82, 82);
+$black: #212529;
+
+// sizes
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$breackpoints: (
+  mv: $sm,
+  tb: $md,
+  dk: $lg,
+  bg: $xl,
+);
+
+// directions
+$directions: (
+  left: l,
+  right: r,
+  top: t,
+  bottom: b,
+);
+
+// wieght
+$italic: 300;
+$normal: 500;
+$bold: 700;
+
+// sizes
+$sizes: (100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200);
+
+// font
+// https://fonts.google.com/
+@import url("https://fonts.googleapis.com/css?family=Lato:300,500,700&display=swap");
+$font: Lato, sans-serif;
+
+$title: 3.5rem;
+$subtitle: 3rem;
+$paragraph: 1.7rem;
+
+// margins and paddings
+$margin: 16px;
+$padding: 16px;
+
+// custom widths
+$aside-width: 200px; // aside
+$side-menu: 200px; // aside
+$width-1: 100px;
+
+// border radius
+$border-radius: 4px;
+
+// inputs
+$input-line: $grey-light;
+$input-line-focus: $grey;
+
+// direction
+$x: (left, right);
+$y: (top, bottom);
+
+$directions: (left, right, top, bottom);
+
+// multipliers
+$multipliers: (
+  2: 2,
+  3: 3,
+);
+// number of columns (grid)
+$numbers: (
+  1: uno,
+  2: two,
+  3: three,
+  4: four,
+  5: five,
+  6: six,
+  7: seven,
+  8: eight,
+  9: nine,
+  10: ten,
+  11: eleven,
+  12: twelve,
+);
+
+$number: 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700,
+  750, 800,850,900,950,1000,1050,1100,1150, 1200;
+
+// darken and lighten values
+$darken: 10%;
+$lighten: 10%;
+
+// global variables, from bootstrap
+:root {
+  // normal
+  @each $key, $value in $colors {
+    --#{$key}: #{$value};
+  }
+  // darken
+  @each $key, $value in $colors {
+    $algo: darken($value, $darken);
+    --#{$key}-dark: #{$algo};
+  }
+  // lighten
+  @each $key, $value in $colors {
+    $algo: lighten($value, $lighten);
+    --#{$key}-light: #{$algo};
+  }
+  // notifiers
+  @each $key, $value in $notifiers {
+    --#{$key}: #{$value};
+  }
+}
+
+// :root {
+//   --blue: #007bff;
+//   --indigo: #6610f2;
+//   --purple: #6f42c1;
+//   --pink: #e83e8c;
+//   --red: #dc3545;
+//   --orange: #fd7e14;
+//   --yellow: #ffc107;
+//   --green: #28a745;
+//   --teal: #20c997;
+//   --cyan: #17a2b8;
+//   --white: #fff;
+//   --gray: #6c757d;
+//   --gray-dark: #343a40;
+//   --primary: #007bff;
+//   --secondary: #6c757d;
+//   --success: #28a745;
+//   --info: #17a2b8;
+//   --warning: #ffc107;
+//   --danger: #dc3545;
+//   --light: #f8f9fa;
+//   --dark: #343a40;
+// }
+
+/*===== z index =====*/
+:root {
+  --z-back: -10;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+//==========================media==========================//
+@mixin from($breackpoint) {
+  @media screen and (min-width: $breackpoint) {
+    @content;
+  }
+}
+@mixin to($breackpoint) {
+  @media screen and (max-width: $breackpoint) {
+    @content;
+  }
+}
+
+//-------------------px convertion----------------------------------//
+// The default font size for html is 16px
+$base-size: 16;
+//Function to convert px value into rem
+//You can replace rem with any other value you want (rem is most preferred value for web)
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1em;
+}
+// Let's use the size whenever you want

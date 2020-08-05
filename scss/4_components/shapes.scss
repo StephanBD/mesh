@@ -1,0 +1,87 @@
+.square {
+  transform: rotateZ(45deg);
+  display: flex;
+  width: 4em;
+  height: 4em;
+  & > img {
+    // display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: scale(1.6) rotateZ(-45deg);
+    // transform: rotateZ(-45deg) scale(1.5) translateX(5px);
+  }
+}
+
+.round {
+  border-radius: 0.5rem;
+  &-2 {
+    border-radius: 0.75rem;
+  }
+  &-3 {
+    border-radius: 1rem;
+  }
+  &-circle,
+  .circle {
+    border-radius: 100rem;
+  }
+}
+
+.box {
+  width: 4.5em;
+  height: 4.5em;
+  display: block;
+
+  @each $num in $number {
+    &-#{$num} {
+      width: #{$num}px;
+      height: #{$num}px;
+      display: block;
+    }
+  }
+}
+
+
+.img {
+  @each $num in $number {
+    &-w#{$num} {
+      width: #{$num}px;
+      display: block;
+      &-center,
+      &-c {
+        width: #{$num}px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+
+  @each $num in $number {
+    &-h#{$num} {
+      height: #{$num}px;
+      display: block;
+      &-right,
+      &-r {
+        height: #{$num}px;
+        display: block;
+
+        margin-right: auto;
+      }
+      &-center,
+      &-c {
+        height: #{$num}px;
+        display: block;
+
+        margin-right: auto;
+        margin-left: auto;
+      }
+      &-left,
+      &-l {
+        height: #{$num}px;
+        display: block;
+
+        margin-left: auto;
+      }
+    }
+  }
+}

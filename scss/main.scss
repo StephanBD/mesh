@@ -1,0 +1,12 @@
+// @import "normalize";
+@import "reset";
+
+@import "1_settings/all";
+@import "2_typography/all";
+@import "3_layout/all";
+@import "4_components/all";
+@import "5_custom/all";
+@import "6_highlevel/all";
+
+// custome theme for a project
+@import "7_theme/all";

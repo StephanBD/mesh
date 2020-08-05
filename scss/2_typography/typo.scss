@@ -1,0 +1,182 @@
+html {
+  font-size: 39.06%;
+  font-family: $font;
+  @include from($md) {
+    font-size: 62.5%;
+    // 100% = 25.60
+  }
+
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $black;
+  text-align: left;
+}
+
+p,
+a,
+table,
+code,
+kbd,
+pre,
+samp {
+  font-size: $paragraph;
+}
+strong {
+  font-weight: 700;
+}
+div {
+  font-size: $paragraph;
+}
+li {
+  list-style-type: none;
+}
+.li {
+  list-style-type: circle;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    color: rgb(29, 213, 219);
+  }
+  &:link {
+    color: rgb(0, 38, 255);
+  }
+  &:visited {
+    color: rgb(144, 47, 255);
+  }
+}
+// selection
+// ::selection {
+//   background: lighten($secondary, 30)
+// }
+
+// titles
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.h1,
+h1 {
+  font-size: $title; // 2.5rem
+}
+.h2,
+h2 {
+  font-size: $title - 0.5;
+}
+.h3,
+h3 {
+  font-size: $title - 0.75;
+}
+.h4,
+h4 {
+  font-size: $title - 1;
+}
+.h5,
+h5 {
+  font-size: $title - 1.25;
+}
+.h6,
+h6 {
+  font-size: $title - 1.5;
+}
+//-----------------------------------------------------//
+.t-white,
+.t-w {
+  color: $white;
+}
+.t-grey-light {
+  color: $grey-light;
+}
+.t-grey,
+.t-g {
+  color: $grey;
+}
+.t-grey-dark {
+  color: $grey-dark;
+}
+.t-black,
+t-b {
+  color: $black;
+}
+
+.t-left {
+  text-align: left;
+}
+.t-center {
+  text-align: center;
+}
+.t-right {
+  text-align: right;
+}
+
+@each $dir in $directions {
+  .t-#{$dir} {
+    text-align: $dir;
+    @each $key, $value in $breackpoints {
+      &-#{$key} {
+        @extend .t-#{$dir};
+        text-align: $dir;
+
+        @include from($value) {
+          text-align: inherit;
+        }
+      }
+    }
+  }
+}
+
+//-----------------------------------------------------//
+
+// ol ol,
+// ol ul,
+// ul ol,
+// ul ul {
+//   margin-left: 2rem;
+// }
+.ol,
+.ol,
+.ul {
+  padding-left: 2rem;
+}
+ol,
+ol,
+ul {
+  padding: 0;
+}
+
+pre,
+samp,
+table {
+  // font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+  //   "Courier New", monospace;
+  font-size: $paragraph;
+  overflow: auto;
+  display: block;
+}
+
+// blockquote {
+//   font-style: italic;
+// }
+
+blockquote,
+pre {
+  // border: 1px solid #adb5bd;
+  page-break-inside: avoid;
+}

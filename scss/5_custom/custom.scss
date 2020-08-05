@@ -1,0 +1,298 @@
+
+//-------------------custom checkbox----------------------------------//
+// $width-box: 15px;
+// input[type="checkbox"] {
+//   position: relative;
+//   margin-left: $margin;
+//   margin-right: $margin;
+//   // left: -1000%;
+//   // display: inline;
+//   cursor: pointer;
+//   height: 1;
+//   width: 0;
+//   // appearance: none;
+//   position: relative;
+//   // margin: 0 15px ;
+//   // transform: translateY(2px);
+// }
+// input[type="checkbox"]:hover::after {
+//   background-color: $grey-light;
+// }
+
+// input[type="checkbox"]::after {
+//   content: "";
+//   position: absolute;
+//   display: inline-block;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+
+//   height: $width-box;
+//   width: $width-box;
+//   color: $quaternary;
+//   background-color: $white;
+//   text-align: center;
+//   font-size: $width-box - ($width-box / 4);
+//   font-weight: $bold;
+//   line-height: $width-box;
+
+//   border: 1px solid $grey;
+//   border-radius: $border-radius;
+//   // border-radius: 50%;
+// }
+// input[type="checkbox"]:checked::after {
+//   content: "\02713";
+// }
+
+
+//-------------------badge----------------------------------//
+// this require that the father to have position:relative
+
+.badge {
+  position: absolute;
+  display: block;
+  color: white;
+  background-color: red;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  border-radius: 30%;
+  padding: 3px;
+  min-width: 10px;
+  min-height: min-content;
+}
+
+// bg-divided
+.bg-divided {
+  background: rgb(237, 237, 237);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 237, 237, 1) 50%,
+    rgba(19, 19, 19, 1) 50%
+  );
+}
+
+//-------------------ul gap----------------------------------//
+@mixin margenes($value, $direction) {
+  @if $direction == "right left" or $direction == "left right" {
+    margin-left: $margin * $value;
+    margin-right: $margin * $value;
+  } @else if $direction == "top bottom" or $direction == "bottom top" {
+    margin-top: $margin * $value;
+    margin-bottom: $margin * $value;
+  } @else if $direction == "all" {
+    margin: $margin * $value;
+  } @else {
+    margin-#{$direction}: $margin * $value;
+  }
+}
+
+ol.gap,
+ul.gap {
+  & > li {
+    // margin: $margin * 0.5;
+    @include margenes(0.5, "all");
+  }
+
+  &-x {
+    & > li {
+      // margin-left: $margin * 0.5;
+      // margin-right: $margin * 0.5;
+      @include margenes(0.5, "left right");
+    }
+    &-2 > li {
+      // margin-right: $margin * 1;
+      // margin-left: $margin * 1;
+      @include margenes(1, "left right");
+    }
+  }
+  &-y {
+    & > li {
+      @include margenes(0.5, "bottom top");
+      // margin-top: $margin * 0.5;
+      // margin-bottom: $margin * 0.5;
+    }
+    &-2 > li {
+      @include margenes(1, "bottom top");
+      // margin-bottom: $margin * 1;
+      // margin-top: $margin * 1;
+    }
+  }
+}
+
+//---------------- gap between childs - row -------------------------//
+
+@mixin separateRow($value) {
+  & > *:not(:first-child) {
+    margin-left: $margin * $value;
+  }
+  & > *:not(:last-child) {
+    margin-right: $margin * $value;
+  }
+}
+
+.gap-row-between {
+  @include separateRow(0.5);
+  &-2 {
+    @include separateRow(1);
+  }
+}
+//---- gap between childs - column -----//
+
+@mixin separateColumn($value) {
+  & > *:not(:first-child) {
+    margin-top: $margin * $value;
+  }
+  & > *:not(:last-child) {
+    margin-bottom: $margin * $value;
+  }
+}
+
+.gap-col-between {
+  @include separateColumn(0.5);
+  &-2 {
+    @include separateColumn(1);
+  }
+}
+
+//==========================efects==========================//
+// mix-blend-mode
+.black-bg {
+  background-color: black;
+  mix-blend-mode: multiply;
+}
+.white-bg {
+  background-color: white;
+  mix-blend-mode: screen;
+}
+
+// characters as images
+.imgvg {
+  background: url('data:image/svg+xml,\
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
+    <style>@keyframes foo %7Bto %7B transform: rotate(-10deg)}}</style>\
+    <text y="1em" font-size="100" style="animation: foo 1s infinite alternate">😈</text>\
+  </svg>');
+  background-size: 100px 100px;
+}
+
+// lines
+.line {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.line::before,
+.line::after {
+  content: "";
+  height: 0.2em;
+  margin: 0.2em;
+  // background-color: gray;
+  border: solid gray;
+  border-width: 0.05em 0;
+  flex: 1;
+}
+
+// focus , not must used 2018
+li:focus-within ul {
+  display: initial;
+}
+
+// flex without media query
+article {
+  display: flex;
+  flex-wrap: wrap;
+}
+header {
+  flex: 1;
+}
+.post {
+  flex: 9999;
+  min-width: 50em;
+}
+//
+.post {
+  grid-auto-flow: column;
+}
+img {
+  object-fit: cover;
+}
+// gradient
+.pie {
+  background: conic-gradient(red, yellow, lime, aqua, blue, fuchsia, red);
+}
+
+
+/*===================profile picture=================================*/
+.profile-container {
+  width: 8em;
+  height: 8em;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .sphere {
+    border-radius: 50%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .profile-picture {
+    background-color: white;
+
+    border: 2px solid white;
+
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    &-sh {
+      @extend .profile-picture;
+      box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+// ustome colors and animations------
+.red-to-blue {
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    220deg,
+    #ffffff 0%,
+    #6284ff 50%,
+    #ff0000 100%
+  );
+  animation-name: rotar;
+  animation-duration: 2s;
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, .5); */
+}
+
+.black {
+  background-color: #ffe53b;
+  background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
+  animation-name: opacidad;
+  animation-duration: 2s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+  mix-blend-mode: hard-light;
+}
+// key frames
+@keyframes rotar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes opacidad {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
+}

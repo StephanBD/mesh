@@ -1,0 +1,4 @@
+node_modules
+projects/*
+scss/7.theme/theme.scss
+.vscode

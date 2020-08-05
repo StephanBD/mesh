@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  // margin-bottom: 10rem;
+  overflow-x: auto;
+  border-spacing: 0;
+  & td,
+  & th,
+  & {
+    padding: 0.5rem;
+    vertical-align: top;
+    border-bottom: 1px solid #dee2e6;
+    // border: 2px solid #dee2e6; // all bordered
+  }
+  & th {
+    text-align: center;
+    font-weight: $bold;
+    background-color: rgb(231, 231, 231);
+  }
+  & caption {
+    font-weight: $italic;
+    font-size: $paragraph - 0.25;
+  }
+  &.odd tr:nth-child(odd) {
+    background: #dae5f4;
+  }
+  &.even tr:nth-child(even) {
+    background: #dae5f4;
+  }
+  // & tbody {
+  // }
+  // & thead {
+  // }
+}
+
+//==========================tips==========================//
+/*  Define the background color for all the ODD background rows  */
+// tr:nth-child(odd) {
+//   background: #dae5f4;
+// }
+/*  Define the background color for all the EVEN background rows  */
+//  tr:nth-child(even){
+//   background: #dae5f4;
+// }
+
+//===============show where are all elements ====================//
+// table {
+//   background-color: rgba(255, 60, 60, 0.363);
+// }
+// thead {
+//   background-color: rgba(255, 219, 60, 0.349);
+// }
+// tbody {
+// background-color: rgba(146, 144, 255, 0.226);
+// }
+// tfoot {
+//   background-color: rgba(119, 255, 65, 0.356);
+// }
+// tr {
+//   border-top: 1px solid #ff0505;
+// }
+// th {
+//   color: blue;
+// }
+// td {
+//   color: green;
+// }
+// caption {
+//   background-color: rgba(179, 16, 255, 0.363);
+// }
+
+//-------------------progress----------------------------------//
+progress {
+  vertical-align: baseline;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+
+  &::-webkit-progress-bar {
+    border-radius: 20px;
+    background-color: $grey-light;
+  }
+  &::-webkit-progress-value {
+    background-color: $primary-dark;
+    border-radius: 20px;
+  }
+}

@@ -1,0 +1,125 @@
+
+//-------------------margin----------------------------------//
+// use in elements inside box-container
+
+@mixin marginData($mop, $direccion) {
+  @each $dir in $direccion {
+    #{$mop}-#{$dir}: $margin;
+  }
+  @each $key, $value in $multipliers {
+    &#{$key},
+    &-#{$key} {
+      @each $dir in $direccion {
+        #{$mop}-#{$dir}: $margin * $value;
+      }
+    }
+  }
+}
+
+.m {
+  margin: $margin;
+
+  &-a {
+    margin: auto;
+  }
+  &-x-a {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &-y-a {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  @each $key, $value in $multipliers {
+    &-#{$key},
+    &#{$key} {
+      margin: $margin * $value;
+    }
+  }
+
+  @each $dir in $directions {
+    &-#{$dir} {
+      margin-#{$dir}: $margin;
+
+      @each $key, $value in $multipliers {
+        &#{$key},
+        &-#{$key} {
+          margin-#{$dir}: $margin * $value;
+        }
+      }
+    }
+  }
+
+  &-x {
+    @include marginData("margin", $x);
+  }
+
+  &-y {
+    @include marginData("margin", $y);
+  }
+}
+
+.p {
+  padding: $padding / 2;
+
+  &-a {
+    padding: auto;
+  }
+  &-x-a {
+    padding-left: auto;
+    padding-right: auto;
+  }
+  &-y-a {
+    padding-top: auto;
+    padding-bottom: auto;
+  }
+
+  @each $key, $value in $multipliers {
+    &-#{$key} {
+      padding: $padding * $value;
+    }
+  }
+
+  @each $dir, $value in $directions {
+    &-#{$dir},
+    &-#{$value} {
+      padding-#{$dir}: $padding * 2;
+    }
+  }
+  &-x {
+    @include marginData("padding", $x);
+  }
+
+  &-y {
+    @include marginData("padding", $y);
+  }
+}
+// ----------------------------
+// erase padding, in some devises
+@each $key, $value in $breackpoints {
+  @media screen and (max-width: 576px) {
+    .p--#{$key} {
+      padding: 0;
+    }
+    .p-x--#{$key} {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .p-y--#{$key} {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .m--#{$key} {
+      margin: 0;
+    }
+    .m-x--#{$key} {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .m-y--#{$key} {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}

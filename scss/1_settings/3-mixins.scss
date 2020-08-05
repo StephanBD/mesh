@@ -1,0 +1,47 @@
+//==========================media==========================//
+@mixin from($breackpoint) {
+  @media screen and (min-width: $breackpoint) {
+    @content;
+  }
+}
+@mixin to($breackpoint) {
+  @media screen and (max-width: $breackpoint) {
+    @content;
+  }
+}
+//-------------------font----------------------------------//
+// @mixin font($breackpoint) {
+//   font-style: normal;
+//   //normal, italic, oblique, initial, inherit
+//   font-variant: ;
+//   // normal, small-caps, initial, inherit
+//   font-weight: ;
+//   // normal, bold, bolder, lighter, number, initial, inherit
+//   font-size: ;
+//   // font-size:medium, xx-small, x-small, small, large, x-large, xx-large, smaller, larger, length, initial, inherit
+//   line-height: ;
+//   // normal, number, length, initial, inherit
+//   font-family: ;
+//   // family-name, generic-family, initial, inherit
+//   // font
+//   // font: ;
+// }
+
+//-------------------px convertion----------------------------------//
+// The default font size for html is 16px
+$base-size: 16;
+
+//Function to convert px value into rem
+//You can replace rem with any other value you want (rem is most preferred value for web)
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}
+
+// use: font-size: size(20);
+
+//-------------------shapes----------------------------------//
+@mixin square($side) {
+  width: $side;
+  height: $side;
+}
+// use: @include square(2rem);

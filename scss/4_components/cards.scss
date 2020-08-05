@@ -1,0 +1,50 @@
+//-------------------card----------------------------------//
+.card {
+  // @extend .d-inline-block;
+  width: 100%;
+  // @include from($sm) {
+  //   width: 400px;
+  // }
+  // background-color: white;
+
+  // height: fit-content;
+  // height: min-content;
+  overflow: hidden;
+  border-collapse: collapse;
+
+  // flex ------------------
+  &-flex{
+    @extend .card;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  // custom styles -----------------------
+  &.stretch {
+    height: auto;
+  }
+  & .head {
+    font-size: $paragraph + 0.25;
+    font-weight: 700;
+    text-align: center;
+  }
+  & .body {
+    font-size: $paragraph;
+    // height: 100%;
+  }
+  & .footer {
+    // margin: auto ;
+    font-size: $paragraph - 0.25;
+    align-self: flex-start;
+    justify-self: flex-start;
+    // font-style: italic;
+    // background-color: red;
+  }
+  &-flex{
+    @extend .card;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

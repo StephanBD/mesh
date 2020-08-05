@@ -1,0 +1,23 @@
+//-------------------backgrounds----------------------------------//
+
+.bg {
+  @each $key, $value in $notifiers {
+    &-#{$key} {
+      background: $value;
+      &-t {
+        background: $value;
+        color: white;
+      }
+    }
+  }
+
+  @each $key, $value in $colors {
+    &-#{$key} {
+      background: $value;
+      &-t {
+        background: $value;
+        color: white;
+      }
+    }
+  }
+}

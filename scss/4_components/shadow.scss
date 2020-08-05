@@ -1,0 +1,59 @@
+
+//-------------------shadows----------------------------------//
+.shadow {
+  &-text {
+    text-shadow: 0px 1px 2px black;
+  }
+  box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.3);
+  &-l,
+  &-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4);
+  }
+  &-sm,
+  &-s {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+  }
+  &-none {
+    box-shadow: none;
+  }
+  //------------inset shadow (inside)---------------//
+
+  &-in {
+    box-shadow: inset 0px 0px 20px 4px rgba(0, 0, 0, 0.3);
+    &-l,
+    &-lg {
+      box-shadow: inset 0px 0px 28px 16px rgba(0, 0, 0, 0.4);
+    }
+    &-sm,
+    &-s {
+      box-shadow: inset 0px 0px 25px 0px rgba(0, 0, 0, 0.42);
+    }
+
+    &-left {
+      box-shadow: inset 10px 0px 15px -10px #000000;
+    }
+    &-right {
+      box-shadow: inset -10px 0px 15px -10px #000000;
+    }
+    &-top {
+      box-shadow: inset 0px 10px 15px -10px #000000;
+    }
+    &-bottom {
+      box-shadow: inset 0px -10px 15px -10px #000000;
+    }
+  }
+
+  &-left {
+    box-shadow: -10px 0px 15px -10px #000000;
+  }
+  &-right {
+    box-shadow: 10px 0px 15px -10px #000000;
+  }
+  &-top {
+    box-shadow: 0px -10px 15px -10px #000000;
+  }
+  &-bottom {
+    box-shadow: 0px 10px 15px -10px #000000;
+  }
+  
+}

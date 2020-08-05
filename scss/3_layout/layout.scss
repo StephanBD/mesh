@@ -1,0 +1,173 @@
+
+/*=====================blocks=============================*/
+.full {
+  width: 100%;
+  height: 100%;
+  &-vw {
+    width: 100vw;
+    min-width: 100vw;
+  }
+  &-vh {
+    height: 100vh;
+    min-height: 100vh;
+  }
+  &-h {
+    height: 100%;
+    min-height: 100%;
+  }
+  &-w {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+// custome width and height --------------------
+
+.width,
+.w {
+  @each $key in $number {
+    &-#{$key} {
+      width: 100%;
+      max-width: #{$key}px;
+    }
+  }
+}
+
+.height,
+.h {
+  @each $key in $number {
+    &-#{$key} {
+      height: #{$key}px;
+      max-height: #{$key}px;
+    }
+  }
+}
+//==========================custom widths==========================//
+.aside-width {
+  width: $aside-width;
+}
+.side-menu {
+  width: $side-menu;
+}
+
+//==========================content==========================//
+.content, .container {
+  // height: 100%;
+  width: 100%;
+  // max-width: 540px;
+  @include from($sm) {
+    max-width: 540px;
+  }
+  @include from($md) {
+    max-width: 720px;
+  }
+  @include from($lg) {
+    max-width: 960px;
+  }
+  @include from($xl) {
+    max-width: 1024px;
+  }
+
+  // breackpoints
+  // @each $key, $value in $breackpoints {
+  //   &-#{$key} {
+  //     width: 100%;
+  //   }
+
+  //   @media screen and (min-width: $value) {
+  //     &-#{$key} {
+  //       max-width: $value;
+  //     }
+  //   }
+  // }
+
+  &-m-a,
+  &-ma,
+  &-a {
+    @extend .content;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+//==========================directions==========================//
+.left-b {
+  display: block;
+  margin-right: auto;
+  width: 70px;
+}
+.right-b {
+  display: block;
+  margin-left: auto;
+  width: 70px;
+}
+.center-b {
+  display: block;
+  margin: auto;
+  width: 70px;
+}
+
+//-----------------------------------------------------//
+.section {
+  width: 100%;
+  // position: relative;
+}
+.aside {
+  position: static;
+  @include from($xl) {
+    width: $aside-width;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 1000;
+    transform: translateX(-100%);
+  }
+}
+
+//==========================print==========================//
+@media print {
+  *,
+  ::after,
+  ::before {
+    text-shadow: none;
+    box-shadow: none;
+  }
+  a:not(.btn) {
+    text-decoration: underline;
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  blockquote,
+  pre {
+    border: 1px solid #adb5bd;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  img,
+  tr {
+    page-break-inside: avoid;
+  }
+  h2,
+  h3,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  @page {
+    size: a3;
+  }
+  body {
+    min-width: 992px;
+  }
+}

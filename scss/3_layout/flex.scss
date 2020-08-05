@@ -1,0 +1,88 @@
+
+//==========================flex==========================//
+.flex {
+  // width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  &-row {
+    @extend .flex;
+    flex-direction: row;
+    &-center-h {
+      justify-content: center;
+    }
+    &-top {
+      align-items: flex-start;
+    }
+    &-center-v {
+      align-content: center;
+      // align-items: center;
+    }
+    &-bottom {
+      align-items: flex-end;
+    }
+    &-center {
+      @extend .flex-row;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &-column {
+    @extend .flex;
+    flex-direction: column;
+    &-center-v {
+      justify-content: center;
+    }
+    &-center-h {
+      align-content: center;
+    }
+    &-left {
+      align-content: flex-start;
+    }
+    &-right {
+      align-content: flex-end;
+    }
+    &-center {
+      @extend .flex-column;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  //----------------------------------------------//
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+  &.evenly {
+    justify-content: space-evenly;
+  }
+  //----------------------------------------------//
+  &.left {
+    justify-content: flex-start;
+  }
+  &.centered {
+    justify-content: center;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
+}
+
+// put footer always at the bottom
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+}
+.main-content {
+  height: 100%;
+}
