@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Document</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous"/><link rel="stylesheet" href="css/main.css"/></head></html><body><div class="bg-dark-t"><div class="content-m flex between"><a href="/">Index</a><a href="/forms.html">forms</a><a href="/aside.html">aside</a><a href="/aside2.html">aside2</a><a href="/navbars.html">navbars</a><a href="/darkmode.html">darkmode</a></div></div><h1 class="mbottom-2 t-center">Navbars</h1><div class="full-w bg-dark-t"><div class="content m-a col  right m-a "><ul class="flex-row-center   right " style=" height:  70px"><li class="btn relative"> <i class="fas fa-user"></i></li><li class="btn relative"> <i class="fas fa-users"></i></li></ul></div></div><div class="full-w bg-grey-light"><div class="content m-x-a col col-fit-menu  place-center-stretch"><h2>Title</h2><ul class="flex-row-center    gap-x  right "><li class="btn">home</li><li class="btn"> content</li><li class="btn"> something</li></ul></div></div><footer class="bg-black-t m-top-3"><button class="btn-center d-block bg-primary t-gray-light round" id="toggledark"> <i class="fas fa-moon"></i></button></footer><script type="text/javascript">// Apply the cached theme on reload
+const theme = localStorage.getItem("theme");
+if (theme) {
+  // body.classList.add(theme);
+  document.body.classList.toggle(theme);
+}
+// Select the button
+const darkBtn = document.querySelector("#toggledark");
+// Listen for a click on the button
+darkBtn.addEventListener("click", function () {  switchTheme("dark-theme");});
+function switchTheme(themeName) {
+  document.body.classList.toggle(themeName);
+   if (!theme) {
+     localStorage.setItem("theme", "dark-theme");
+   } else {
+     localStorage.removeItem("theme");
+   }
+}</script></body>

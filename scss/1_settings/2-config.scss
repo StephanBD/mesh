@@ -1,15 +1,31 @@
-* {
+html {
+  // height: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
+
+  // overflow-x: hidden;
+}
+body {
+  // background-color: $white;
+  // smooth transition--------
+  // transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+  transition: color 1000ms ease-in-out;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
-
 
 img {
   border: 0;
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+  display: inline-block;
+  object-fit: cover;
 }
 
 table {
@@ -29,11 +45,11 @@ table {
   & th {
     text-align: center;
     font-weight: $bold;
-    background-color: rgb(231, 231, 231);
+    // background-color: rgb(231, 231, 231);
   }
   & caption {
     font-weight: $italic;
-    font-size: $paragraph - 0.25;
+    font-size: $paragraph;
   }
   &.odd tr:nth-child(odd) {
     background: #dae5f4;
@@ -90,11 +106,12 @@ progress {
   background-color: rgba(255, 255, 255, 0);
 
   &::-webkit-progress-bar {
+    background-color: $gray-light;
     border-radius: 20px;
-    background-color: $grey-light;
   }
-  &::-webkit-progress-value {
-    background-color: $primary-dark;
+
+  @include placeholder(progress-bar) {
+    background-color: var(--primary-dark);
     border-radius: 20px;
   }
 }

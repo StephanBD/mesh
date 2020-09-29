@@ -1,4 +1,5 @@
 node_modules
 projects/*
-scss/7.theme/theme.scss
+scss/6.theme/*
+!_all.scss	
 .vscode

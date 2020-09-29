@@ -1,36 +1,35 @@
 html {
-  font-size: 39.06%;
+  // font-size: 100% = 25.60
+  font-size: 30%;
   font-family: $font;
-  @include from($md) {
+  @include from(250px) {
     font-size: 62.5%;
-    // 100% = 25.60
   }
-
 }
 
 body {
-  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
-  color: $black;
+  color: var(--text-color);
   text-align: left;
-}
-
-p,
-a,
-table,
-code,
-kbd,
-pre,
-samp {
+  // line-break: auto;
   font-size: $paragraph;
 }
+
+// p,
+// a,
+// table,
+// code,
+// kbd,
+// pre,
+// samp,
+// div {
+//   font-size: $paragraph;
+// }
 strong {
   font-weight: 700;
 }
-div {
-  font-size: $paragraph;
-}
+
 li {
   list-style-type: none;
 }
@@ -40,15 +39,23 @@ li {
 
 a {
   text-decoration: none;
-  &:hover {
-    color: rgb(29, 213, 219);
+  color: inherit;
+  // color: var(--link-color);
+  outline: none;
+  cursor: pointer;
+
+  a:focus {
+    outline: none;
   }
-  &:link {
-    color: rgb(0, 38, 255);
-  }
-  &:visited {
-    color: rgb(144, 47, 255);
-  }
+  // &:hover {
+  //   color: rgb(29, 213, 219);
+  // }
+  // &:link {
+  //   color: rgb(0, 38, 255);
+  // }
+  // &:visited {
+  //   color: rgb(144, 47, 255);
+  // }
 }
 // selection
 // ::selection {
@@ -70,7 +77,8 @@ h5,
 h6 {
   // margin-bottom: 0.5rem;
   font-weight: 500;
-  line-height: 1.2;
+  color: var(--title-color);
+  // line-height: 1.2;
 }
 .h1,
 h1 {
@@ -96,26 +104,63 @@ h5 {
 h6 {
   font-size: $title - 1.5;
 }
-//-----------------------------------------------------//
-.t-white,
-.t-w {
-  color: $white;
-}
-.t-grey-light {
-  color: $grey-light;
-}
-.t-grey,
-.t-g {
-  color: $grey;
-}
-.t-grey-dark {
-  color: $grey-dark;
-}
-.t-black,
-t-b {
-  color: $black;
+
+//-------------------headings----------------------------------//
+.display {
+  @for $i from 1 through 4 {
+    &-#{$i} {
+      @include from($sm) {
+        font-size: 8rem - $i;
+        font-weight: 300;
+      }
+    }
+  }
 }
 
+//-------------------font weight----------------------------------//
+.bold,
+.t-bold {
+  font-weight: bold;
+}
+
+//-------------------text color----------------------------------//
+@each $key, $value in $colors {
+  .t-#{$key} {
+    color: var(--#{$key});
+  }
+}
+@each $key, $value in $text-colors {
+  .#{$key} {
+    color: var(--#{$key});
+  }
+}
+@each $key, $value in $notifiers {
+  .t-#{$key} {
+    color: var(--#{$key});
+  }
+}
+
+// --------
+// .t-white,
+// .t-w {
+//   color: var(--text-white);
+// }
+// .t-gray-light {
+//   color: $gray-light;
+// }
+// .t-gray,
+// .t-g {
+//   color: $gray;
+// }
+// .t-gray-dark {
+//   color: $gray-dark;
+// }
+// .t-black,
+// .t-b {
+//   color: $black;
+// }
+
+// -------
 .t-left {
   text-align: left;
 }
@@ -124,22 +169,6 @@ t-b {
 }
 .t-right {
   text-align: right;
-}
-
-@each $dir in $directions {
-  .t-#{$dir} {
-    text-align: $dir;
-    @each $key, $value in $breackpoints {
-      &-#{$key} {
-        @extend .t-#{$dir};
-        text-align: $dir;
-
-        @include from($value) {
-          text-align: inherit;
-        }
-      }
-    }
-  }
 }
 
 //-----------------------------------------------------//
@@ -179,4 +208,36 @@ blockquote,
 pre {
   // border: 1px solid #adb5bd;
   page-break-inside: avoid;
+}
+
+//-------------------form----------------------------------//
+::-webkit-input-placeholder {
+  font-family: $font;
+}
+:-moz-placeholder {
+  font-family: $font;
+}
+::-moz-placeholder {
+  font-family: $font;
+}
+:-ms-input-placeholder {
+  font-family: $font;
+}
+
+//-------------------code----------------------------------//
+
+code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+}
+
+pre {
+  padding: 1em;
+}
+
+code,
+pre {
+  // background: #f5f7f9;
+  // border-bottom: 1px solid #d8dee9;
+  // color: #a7adba;
 }

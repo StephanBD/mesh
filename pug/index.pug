@@ -1,0 +1,191 @@
+extend head/_link.pug
+block contenidos
+  h1.t-center Index  
+  div(class="content-m  shadow p  ")
+
+    h2.bold Tags
+    h1 h1
+    h2 h2
+    h3 h3
+    h4 h4
+    h5 h5
+    h6 h6
+
+    h2.bold Classes
+    h6.h1 .h1
+    h6.h2 .h2
+    h6.h3 .h3
+    h6.h4 .h4
+    h6.h5 .h5
+    h6.h6 .h6
+
+    h2.bold Display
+    h6.display-1 display-1
+    h6.display-2 display-2
+    h6.display-3 display-3
+    h6.display-4 display-4
+
+    h2.bold Paragraph
+    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla dignissimos deleniti fugiat minus vitae, quod voluptatibus dolorem est repudiandae ullam optio facilis corrupti facere earum vero fugit veniam minima incidunt.
+    p
+      strong strong
+    p
+      b bold
+    p
+      i italic
+    p
+      em emphasis
+    p
+      a(href="#") link
+
+    h2.bold Lists
+    ol 
+      li ol item 
+      li 
+        li Nested list item
+      ul 
+        li  Nested list item          
+    ul 
+      li ul item
+      li 
+        li Nested list item      
+      ul 
+        li  Nested list item
+
+    h2.bold Shapes
+    p.bold pre
+    pre 
+      |Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, explicabo quibusdam. Impedit explicabo perferendis iusto molestias repudiandae corporis possimus.
+    p.bold pre p 
+    pre
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, explicabo quibusdam. Impedit explicabo perferendis iusto molestias repudiandae corporis possimus.
+    p.bold code
+    code Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, explicabo quibusdam. Impedit explicabo perferendis iusto molestias repudiandae corporis possimus.
+    p.bold code p
+    code 
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, explicabo quibusdam. Impedit explicabo perferendis iusto molestias repudiandae corporis possimus.
+
+    p.bold blockquote
+    blockquote Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, explicabo quibusdam. Impedit explicabo perferendis iusto molestias repudiandae corporis possimus.
+
+    h2.bold Shapes
+    div
+      div( class="box m  bg-grey") 
+      div( class="box m round bg-grey")
+      div( class="box m round-2 bg-grey")
+      div( class="box m round-3 bg-grey")
+      div( class="box m round-circle  bg-grey")
+
+    h2.bold Images
+    figure( class="figure")
+      img(src="https://via.placeholder.com/150")
+      figcaption figure & figcaption
+    .gall-1
+      img(src="https://via.placeholder.com/150")
+    .gall-2
+      img(src="https://via.placeholder.com/150")
+    .gall-3
+      img(src="https://via.placeholder.com/150")
+    .gall-4
+      img(src="https://via.placeholder.com/150")
+    .gall-5
+      img(src="https://via.placeholder.com/150")
+    .gall-6
+      img(src="https://via.placeholder.com/150")
+
+
+    h2.bold Table
+    div( class="overflow-x")
+      table
+        caption caption
+        thead
+          tr
+            th thead 
+            th thead 
+            th thead 
+            th thead 
+          tr
+            td td 
+            td td 
+            td td 
+            td td 
+        tbody
+          tr
+            th tbody
+            th tbody 
+            th tbody 
+            th tbody 
+          tr
+            td td 
+            td td 
+            td td 
+            td td 
+          tr
+            td td 
+            td td 
+            td td 
+            td td 
+        tfoot 
+          tr
+            th tfoot 
+            td td 
+            td td 
+            td td 
+          tr
+            th tfoot 
+            td td  
+            td td  
+            td td  
+
+    h2.bold Cards
+    .col-3.gap
+      .card
+        +img(500)
+        p header
+        p body
+        p footer    
+      .card.shadow
+        p.head card 
+        p.body body
+        p.footer footer
+      .card-flex.shadow.stretch
+        p.head card-flex
+        p.body  stretch height     
+      .card.bg-info.round-3
+        +img(500)
+        p.head header
+        p.body.p round-3
+      .card.shadow.p
+        +img(500)
+        p.head header
+        p.body body
+        p.footer footer
+
+
+    h2.bold Shadows
+    p no shadow     
+    .box.m.bg-grey-light.shadow-none 
+    p outside shadow     
+    .box.m.bg-grey-light.shadow
+    .box.m.bg-grey-light.shadow-sm
+    .box.m.bg-grey-light.shadow-lg
+    .box.m.bg-grey-light.shadow-top
+    .box.m.bg-grey-light.shadow-left
+    .box.m.bg-grey-light.shadow-bottom
+    .box.m.bg-grey-light.shadow-right
+    p inner shadow 
+    .box.m.bg-grey-light.shadow-in
+    .box.m.bg-grey-light.shadow-in-top
+    .box.m.bg-grey-light.shadow-in-left
+    .box.m.bg-grey-light.shadow-in-bottom
+    .box.m.bg-grey-light.shadow-in-right
+    p text shadow 
+    h4.shadow-t.bold lorem
+
+
+    br
+    br
+    br
+    br
+    br
+    br

@@ -1,35 +1,35 @@
 /*====================sidebar================================*/
+// it requires Javascript
 
-/*=====  SASS =====*/
 $nav-width-sm: 56;
 $nav-width-bg: 160;
 
-.nav-p  {
-  // only on desktop
+// only on desktop
+.nav-p {
   @media screen and (min-width: $md) {
-    &-l{
-      transition: padding 0.5s;    
+    &-l {
+      transition: padding 0.5s;
       padding-left: 80px;
     }
-    &-r{
-      transition: padding 0.5s;    
+    &-r {
+      transition: padding 0.5s;
       padding-right: 80px;
     }
   }
 }
 /*=====  NAV =====*/
 .sidebar {
-  background-color: $grey-dark;
+  // background-color: var(--gray-dark);
   overflow: hidden;
   transition: 0.5s width;
   // ----
   z-index: var(--z-fixed);
-  @include from ($md){
-  position: fixed;
-  top: 0;
-  // left: 0;
-  width: #{$nav-width-sm}px;
-  height: 100vh;
+  @include from($md) {
+    position: fixed;
+    top: 0;
+    // left: 0;
+    width: #{$nav-width-sm}px;
+    height: 100vh;
   }
   & .p {
     padding: 1.25rem 0.5rem 2rem;
@@ -58,7 +58,19 @@ $nav-width-bg: 160;
 }
 
 // optional---------------------------------
-// children should have display: flex
+@mixin nav($minwidth, $maxwidth) {
+  overflow: hidden;
+  transition: 0.3s;
+  width: $minwidth;
+  // &:hover {
+  //   width: $maxwidth;
+  // }
+  & > * {
+    // &__item {
+    display: flex;
+  }
+}
+
 .nav {
   height: 100%;
   display: flex;
@@ -71,7 +83,6 @@ $nav-width-bg: 160;
     align-items: center;
     // justify-content: center;
     // padding: 0 .5rem;
-  
   }
   &__link {
     display: flex;
@@ -80,12 +91,12 @@ $nav-width-bg: 160;
     // padding: 0.5rem;
     margin-bottom: 1rem;
     border-radius: 0.5rem;
-    color: $white;
+    color: var(--white);
     transition: 0.3s;
 
     &:hover {
-      background-color: $black;
-      color: $white;
+      background-color: var(--black);
+      color: var(--white);
     }
   }
 }
@@ -96,17 +107,15 @@ $nav-width-bg: 160;
   // position: absolute;
   // top: 1.19rem;
   // right: -0.6rem;
-  display: inline-block;
+  display: inline-flex;
   width: 2rem;
   height: 2rem;
-  background-color: $black;
+  background-color: var(--black);
   border-radius: 50%;
   font-size: 1.25rem;
-  color: $white;
-  display: flex;
+  color: var(--text-white);
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: 0.5s all;
 }
-

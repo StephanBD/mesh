@@ -1,0 +1,71 @@
+.bg-image {
+  /* background-image: url(images/code-programming-text-strings-multicolored.jpg); */
+
+  position: relative;
+  // min-height: 100%;
+  @include to($md) {
+    @include flex-dcia(column, center, center);
+    text-align: center;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  z-index: $z-tooltip_10;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
+  // width: 100%;
+  & .sidebar-contact {
+    padding: 3rem 0;
+    color: white;
+    @include from($md) {
+      @include aside();
+      width: 230px;
+    }
+  }
+}
+
+// perfil
+.perfil-img {
+  @include from($md) {
+    @include zoom-effect;
+  }
+  margin: auto;
+  width: 100px;
+}
+
+// .menu {
+//   @include flex-dcia(column, space-between, center);
+//   z-index: $z-fixed_100;
+// }
+.menu-items {
+  @include to($md) {
+    // @include flex-dcia(column, center, center, center);
+    // font-weight: bold;
+    // width: 100%;
+    // @include separateColumn($margin);
+    // height: 200px;
+    // background-color: $gray-dark;
+  }
+  @include from($md) {
+    // @include flex-dcia(row);
+    // @include separateRow($margin);
+  }
+}
+
+.toggle-wrap {
+  @include to($md) {
+    // display: none;
+    // position: absolute;
+    // top: 100%;
+    // left: 50%;
+    // transform: translate(-50%, 0);
+    // width: 100%;
+    // z-index: $z-tooltip_10;
+  }
+}
+.btn-toggle {
+  margin: auto;
+  color: white;
+
+  @include from($md) {
+    display: none;
+  }
+}

@@ -1,5 +1,4 @@
-
-//-------------------custom checkbox----------------------------------//
+//-------------------custom checkbox chrome----------------------------------//
 // $width-box: 15px;
 // input[type="checkbox"] {
 //   position: relative;
@@ -16,7 +15,7 @@
 //   // transform: translateY(2px);
 // }
 // input[type="checkbox"]:hover::after {
-//   background-color: $grey-light;
+//   background-color: var(--gray-light);
 // }
 
 // input[type="checkbox"]::after {
@@ -29,14 +28,14 @@
 
 //   height: $width-box;
 //   width: $width-box;
-//   color: $quaternary;
-//   background-color: $white;
+//   color: var(--quaternary);
+//   background-color: var(--white);
 //   text-align: center;
 //   font-size: $width-box - ($width-box / 4);
 //   font-weight: $bold;
 //   line-height: $width-box;
 
-//   border: 1px solid $grey;
+//   border: 1px solid $gray;
 //   border-radius: $border-radius;
 //   // border-radius: 50%;
 // }
@@ -44,17 +43,17 @@
 //   content: "\02713";
 // }
 
-
 //-------------------badge----------------------------------//
 // this require that the father to have position:relative
+@mixin badge($background: white, $color: initial) {
+  background-color: $background;
+  color: $color;
 
-.badge {
   position: absolute;
   display: block;
-  color: white;
-  background-color: red;
   top: 0;
   right: 0;
+
   text-align: center;
   font-size: 11px;
   border-radius: 30%;
@@ -63,10 +62,22 @@
   min-height: min-content;
 }
 
-// bg-divided
+.badge {
+  @include badge(red, white);
+}
+// background 2 colors ------------------------------
+@mixin linear-gradient(
+  $directionDeg: 0deg,
+  $first-color: black,
+  $second-color: white,
+  $background: initial
+) {
+  background: $background;
+  background: linear-gradient($directionDeg, $first-color, $second-color);
+}
+
 .bg-divided {
-  background: rgb(237, 237, 237);
-  background: linear-gradient(
+  @include linear-gradient(
     90deg,
     rgba(237, 237, 237, 1) 50%,
     rgba(19, 19, 19, 1) 50%
@@ -123,46 +134,46 @@ ul.gap {
 
 //---------------- gap between childs - row -------------------------//
 
-@mixin separateRow($value) {
+@mixin separateRow($value: $margin) {
   & > *:not(:first-child) {
-    margin-left: $margin * $value;
+    margin-left: $value;
   }
   & > *:not(:last-child) {
-    margin-right: $margin * $value;
+    margin-right: $value;
   }
 }
 
-.gap-row-between {
-  @include separateRow(0.5);
+.gap-row {
+  @include separateRow($margin / 2);
   &-2 {
-    @include separateRow(1);
+    @include separateRow($margin);
   }
 }
 //---- gap between childs - column -----//
 
-@mixin separateColumn($value) {
+@mixin separateColumn($value: $margin) {
   & > *:not(:first-child) {
-    margin-top: $margin * $value;
+    margin-top: $value;
   }
   & > *:not(:last-child) {
-    margin-bottom: $margin * $value;
+    margin-bottom: $value;
   }
 }
 
-.gap-col-between {
-  @include separateColumn(0.5);
+.gap-col {
+  @include separateColumn($margin / 2);
   &-2 {
-    @include separateColumn(1);
+    @include separateColumn($margin);
   }
 }
 
 //==========================efects==========================//
 // mix-blend-mode
-.black-bg {
+.blend-black {
   background-color: black;
   mix-blend-mode: multiply;
 }
-.white-bg {
+.blend-white {
   background-color: white;
   mix-blend-mode: screen;
 }
@@ -177,15 +188,15 @@ ul.gap {
   background-size: 100px 100px;
 }
 
-// lines
-.line {
+// hamburger lines ===
+.hamburger {
   display: flex;
   width: 100%;
   align-items: center;
 }
 
-.line::before,
-.line::after {
+.hamburger::before,
+.hamburger::after {
   content: "";
   height: 0.2em;
   margin: 0.2em;
@@ -201,98 +212,53 @@ li:focus-within ul {
 }
 
 // flex without media query
-article {
-  display: flex;
-  flex-wrap: wrap;
-}
-header {
-  flex: 1;
-}
-.post {
-  flex: 9999;
-  min-width: 50em;
-}
-//
-.post {
-  grid-auto-flow: column;
-}
-img {
-  object-fit: cover;
-}
+// .article {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+// .header {
+//   flex: 1;
+// }
+// .post {
+//   flex: 9999;
+//   min-width: 50em;
+// }
+
+// -------------
+// .post {
+//   grid-auto-flow: column;
+// }
+
 // gradient
 .pie {
   background: conic-gradient(red, yellow, lime, aqua, blue, fuchsia, red);
 }
 
-
-/*===================profile picture=================================*/
-.profile-container {
-  width: 8em;
-  height: 8em;
-
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  & .sphere {
-    border-radius: 50%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  & .profile-picture {
-    background-color: white;
-
-    border: 2px solid white;
-
-    width: 90%;
-    height: 90%;
-    overflow: hidden;
-    &-sh {
-      @extend .profile-picture;
-      box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
-    }
-  }
-}
-// ustome colors and animations------
-.red-to-blue {
-  background-color: #ffffff;
-  background-image: linear-gradient(
-    220deg,
-    #ffffff 0%,
-    #6284ff 50%,
-    #ff0000 100%
-  );
-  animation-name: rotar;
-  animation-duration: 2s;
-  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, .5); */
+//-----------------------------------------------------//
+@mixin parallelogram {
+  --width: 100px;
+  background: red;
+  display: inline-block;
+  width: var(--width);
+  margin-right: -14px;
+  clip-path: polygon(0% 0%, calc(var(--width) - 10px) 0%, 100% 100%, 10px 100%);
+  text-align: center;
+  color: white;
+  transition: all 0.3s;
 }
 
-.black {
-  background-color: #ffe53b;
-  background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
-  animation-name: opacidad;
-  animation-duration: 2s;
-  animation-direction: reverse;
-  animation-fill-mode: forwards;
-  mix-blend-mode: hard-light;
-}
-// key frames
-@keyframes rotar {
-  0% {
-    transform: rotate(0deg);
+//-------------------carousel hover----------------------------------//
+// container
+@mixin carousel {
+  &:hover > * {
+    opacity: 0.3;
   }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes opacidad {
-  100% {
+  &:hover > *:hover {
     opacity: 1;
+    transform: scale(1.5);
   }
-  0% {
-    opacity: 0;
+  & > * {
+    transform-origin: center left;
+    transition: 450ms;
   }
 }

@@ -1,0 +1,145 @@
+body {
+  position: relative;
+
+  padding-bottom: $footer;
+  min-height: 100%;
+
+  // background
+  background: linear-gradient(hsla(0, 0%, 0%, 0.623) 90%, hsla(0, 0%, 0%, 0)),
+    url(../projects/images/code-programming-text-strings-multicolored.jpg);
+  background-attachment: fixed;
+  background-position: right;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $footer / 4;
+  text-align: center;
+  color: white;
+}
+
+.banner {
+  @include from($sm) {
+    height: 300px;
+  }
+  @include flex-dcia(column, center, center, center);
+}
+
+.card-design {
+  @include card-f();
+  @include round(1rem, 1rem, 1rem, 1rem);
+  padding-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  // text-align: center;
+}
+.square {
+  padding: $padding;
+  cursor: pointer;
+  @include square(200px);
+  // &::before {
+    @include before("", absolute) {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: background-color 0.2s;
+    }
+  // }
+
+  &:hover::before {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  &-text { 
+    z-index: $z-modal_1000;
+  }
+}
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  &-section {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+
+    // height: ;
+    // width: ;
+  }
+}
+
+.contenido {
+  height: 100%;
+}
+
+.fecha {
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.btn-ver {
+  margin-top: 2rem;
+  background-color: var(--info);
+  border-radius: 0.5rem;
+  color: white;
+}
+.menu {
+  @include flex-dcia(row, space-between, center);
+  z-index: $z-fixed_100;
+}
+// .menu-items {
+//   @include to($md) {
+//     @include flex-dcia(column, space-around, center);
+//     // width: 100%;
+//     // @include separateColumn($margin);
+//     height: 200px;
+//   }
+//   @include from($md) {
+//     @include flex-dcia(row, stretch);
+//     @include separateRow($margin);
+//   }
+//   background-color: inherit;
+// }
+
+// .toggle-wrap {
+//   @include to($md) {
+//     position: absolute;
+//     top: 100%;
+//     left: 50%;
+//     transform: translate(-50%, 0);
+//     width: 100%;
+//   }
+//   background-color: inherit;
+
+
+// }
+.main-container {
+  overflow: hidden;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.paginate {
+  height: 100px;
+  @include flex-dcia(row, center, center);
+  @include from($md) {
+    justify-content: flex-end;
+  }
+  & .active {
+    background-color: var(--info);
+  }
+  & > li {
+    @include btn(initial, 1rem, 0.5rem);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    @include noselect;
+  }
+}

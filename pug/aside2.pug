@@ -1,0 +1,53 @@
+extend head/_link.pug
+block contenidos
+  h1(class="mbottom-2 t-center") Dynamic Aside 2
+  //--------------------------------------
+  #body.nav-p-l.nav-p-r
+
+    .sidebar-left#navbar-left.shadow
+      .nav.bg-gray-dark-t
+        li.nav__logo
+          span.nav__logo-text Bedimcode
+        ul.nav__list
+          li.nav__link
+            i.bx.bx-grid-alt.nav__icon
+            span.nav__text Footer
+
+    .sidebar-right#navbar-right.shadow
+      .nav.bg-light
+        li.nav__logo
+          span.nav__logo-text Bedimcode
+        ul.nav__list
+          li.nav__link
+            i.bx.bx-grid-alt.nav__icon
+            span.nav__text Footer
+
+    .content-a
+      h2 content
+      p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam hic alias dicta perspiciatis suscipit ullam ex animi, neque ad odio consequuntur illo perferendis obcaecati omnis facilis quasi dolorum nesciunt eaque.
+      p.gap-row
+        span.nav__toggle#nav-toggle-left
+          i.fas.fa-long-arrow-alt-left
+        span left
+      p.gap-row
+        span right
+        span.nav__toggle#nav-toggle-right
+          i.fas.fa-long-arrow-alt-right
+
+  script(type="text/javascript")
+    | const showMenu = (toggleId, navbarId, to) => {
+    |   const
+    |     toggle = document.getElementById(toggleId),
+    |     navbar = document.getElementById(navbarId),
+    |     bodypadding = document.getElementById("body")
+    |   if (toggle && navbar) {
+    |     toggle.addEventListener("click", () => {
+    |       console.log("click");
+    |       navbar.classList.toggle("show")
+    |       bodypadding.classList.toggle(to)
+    |     })
+    |   }
+    | }
+    | showMenu("nav-toggle-right", "navbar-right", "expand-right")
+    | showMenu("nav-toggle-left", "navbar-left", "expand-left")
+

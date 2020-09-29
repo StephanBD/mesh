@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Document</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous"/><link rel="stylesheet" href="css/main.css"/></head></html><body><div class="bg-dark-t"><div class="content-m flex between"><a href="/">Index</a><a href="/forms.html">forms</a><a href="/aside.html">aside</a><a href="/aside2.html">aside2</a><a href="/navbars.html">navbars</a><a href="/darkmode.html">darkmode</a></div></div><h1 class="mbottom-2 t-center">Aside</h1>xxxxxx<section class=" section"><main class="m-y content-m  bg-gray ">content 1<nav class="  aside bg-success  ">nav 2</nav></main></section><main class="m-y content-m  bg-gray-light relative h-50"> content 2       
+content 2       
+content 2       <nav class="absolute-right bp-movile  bg-success-t full-h w-100 ">nav 2</nav></main><main class="m-y content-m  bg-gray  col--2-1 "><div>content 3</div><nav class="bg-success t-white ">nav 3</nav></main><main class="m-y content-m  bg-gray  col--1-3 "><div>content 4</div><nav class="bg-success t-white ">nav 4</nav></main><main class=" col--1-content-1 bg-gray "><nav class="bg-success t-white ">nav 5</nav><div class="content-m">content 5</div><nav class="bg-success t-white ">nav 5</nav></main><footer class="bg-black-t m-top-3"><button class="btn-center d-block bg-primary t-gray-light round" id="toggledark"> <i class="fas fa-moon"></i></button></footer><script type="text/javascript">// Apply the cached theme on reload
+const theme = localStorage.getItem("theme");
+if (theme) {
+  // body.classList.add(theme);
+  document.body.classList.toggle(theme);
+}
+// Select the button
+const darkBtn = document.querySelector("#toggledark");
+// Listen for a click on the button
+darkBtn.addEventListener("click", function () {  switchTheme("dark-theme");});
+function switchTheme(themeName) {
+  document.body.classList.toggle(themeName);
+   if (!theme) {
+     localStorage.setItem("theme", "dark-theme");
+   } else {
+     localStorage.removeItem("theme");
+   }
+}</script></body>

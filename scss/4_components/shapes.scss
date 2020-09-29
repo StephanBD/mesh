@@ -1,15 +1,21 @@
-.square {
+.diamond {
   transform: rotateZ(45deg);
   display: flex;
   width: 4em;
   height: 4em;
-  & > img {
+  & > * {
     // display: block;
     margin-top: auto;
     margin-bottom: auto;
     transform: scale(1.6) rotateZ(-45deg);
     // transform: rotateZ(-45deg) scale(1.5) translateX(5px);
   }
+}
+@mixin round($top-left: 0, $top-right: 0, $bottom-right: 0, $bottom-left: 0) {
+  border-top-left-radius: $top-left;
+  border-top-right-radius: $top-right;
+  border-bottom-left-radius: $bottom-right;
+  border-bottom-right-radius: $bottom-left;
 }
 
 .round {
@@ -24,64 +30,59 @@
   .circle {
     border-radius: 100rem;
   }
+
+  &-top {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    &-2 {
+      border-top-left-radius: 0.75rem;
+      border-top-right-radius: 0.75rem;
+    }
+  }
+  &-bottom {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    &-2 {
+      border-bottom-left-radius: 0.75rem;
+      border-bottom-right-radius: 0.75rem;
+    }
+  }
+  &-left {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    &-2 {
+      border-top-left-radius: 0.75rem;
+      border-bottom-left-radius: 0.75rem;
+    }
+  }
+  &-right {
+    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    &-2 {
+      border-bottom-right-radius: 0.75rem;
+      border-top-right-radius: 0.75rem;
+    }
+  }
 }
 
+//-------------------shapes----------------------------------//
+@mixin square($side) {
+  width: $side;
+  height: $side;
+}
+// use: @include square(2rem);
+
 .box {
-  width: 4.5em;
-  height: 4.5em;
-  display: block;
+  @include square(4.5rem);
+  // width: 4.5em;
+  // height: 4.5em;
+  display: inline-block;
 
   @each $num in $number {
     &-#{$num} {
       width: #{$num}px;
       height: #{$num}px;
-      display: block;
-    }
-  }
-}
-
-
-.img {
-  @each $num in $number {
-    &-w#{$num} {
-      width: #{$num}px;
-      display: block;
-      &-center,
-      &-c {
-        width: #{$num}px;
-        display: block;
-        margin-right: auto;
-        margin-left: auto;
-      }
-    }
-  }
-
-  @each $num in $number {
-    &-h#{$num} {
-      height: #{$num}px;
-      display: block;
-      &-right,
-      &-r {
-        height: #{$num}px;
-        display: block;
-
-        margin-right: auto;
-      }
-      &-center,
-      &-c {
-        height: #{$num}px;
-        display: block;
-
-        margin-right: auto;
-        margin-left: auto;
-      }
-      &-left,
-      &-l {
-        height: #{$num}px;
-        display: block;
-
-        margin-left: auto;
-      }
+      display: inline-block;
     }
   }
 }

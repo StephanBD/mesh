@@ -1,0 +1,38 @@
+extend head/_link.pug
+block contenidos
+    h1(class="mbottom-2 t-center") Forms
+    //--------------------------------------
+    div(class="content-m shadow p")
+      form(action="")
+        |x 
+        input( type="checkbox" checked="checked")
+        br
+        input( type="checkbox" id="1")
+        label(for="1") label
+        br
+        label(for="2") label
+
+        input( type="checkbox" id="2")
+        input( type="color")
+        input( type="email" placeholder="email")
+        input( type="file")
+        input( type="hidden")
+        input( type="image" value="Image")
+        input( type="month")
+        input( type="number" placeholder="number")
+        input( type="password" placeholder="password")
+        input( type="radio" id="radio") 
+        label(for="radio") radio
+        input( type="range" value="1" min="1" max="20" autocomplete="off")
+        input( type="search" placeholder="search")
+        input( type="tel" placeholder="tel")
+        input( type="text" placeholder="text")
+        input( type="time")
+        input( type="url" placeholder="url")
+        input( type="week")
+        textarea( name="" id="" placeholder="textarea")
+        
+        input( type="reset" class="d-inline" value="xxx")
+        input( type="submit" class="d-inline")
+        input( type="button" value="Button" class="d-inline")
+        input( type="submit" class="full-w")

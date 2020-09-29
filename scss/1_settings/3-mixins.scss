@@ -5,27 +5,47 @@
   }
 }
 @mixin to($breackpoint) {
-  @media screen and (max-width: $breackpoint) {
+  @media screen and (max-width: $breackpoint - 1) {
     @content;
   }
 }
+
 //-------------------font----------------------------------//
-// @mixin font($breackpoint) {
-//   font-style: normal;
-//   //normal, italic, oblique, initial, inherit
-//   font-variant: ;
-//   // normal, small-caps, initial, inherit
-//   font-weight: ;
-//   // normal, bold, bolder, lighter, number, initial, inherit
-//   font-size: ;
-//   // font-size:medium, xx-small, x-small, small, large, x-large, xx-large, smaller, larger, length, initial, inherit
-//   line-height: ;
-//   // normal, number, length, initial, inherit
-//   font-family: ;
-//   // family-name, generic-family, initial, inherit
-//   // font
-//   // font: ;
-// }
+@mixin font(
+  $font-size: none,
+  $font-weight: none,
+  $font-family: none,
+  $font-style: none,
+  $font-variant: none,
+  $line-height: none
+) {
+  @if $font-style != none {
+    font-style: $font-style;
+    //normal, italic, oblique, initial, inherit
+  }
+  @if $font-variant != none {
+    font-variant: $font-variant;
+    // normal, small-caps, initial, inherit
+  }
+  @if $font-weight != none {
+    font-weight: $font-weight;
+    // normal, bold, bolder, lighter, number, initial, inherit
+  }
+  @if $font-size != none {
+    font-size: $font-size;
+    // font-size:medium, xx-small, x-small, small, large, x-large, xx-large, smaller, larger, length, initial, inherit
+  }
+  @if $line-height != none {
+    line-height: $line-height;
+    // normal, number, length, initial, inherit
+  }
+  @if $font-family != none {
+    font-family: $font-family;
+    // family-name, generic-family, initial, inherit
+  }
+  // font
+  // font: : initial;
+}
 
 //-------------------px convertion----------------------------------//
 // The default font size for html is 16px
@@ -39,9 +59,161 @@ $base-size: 16;
 
 // use: font-size: size(20);
 
-//-------------------shapes----------------------------------//
-@mixin square($side) {
-  width: $side;
-  height: $side;
+//-------------------padding----------------------------------//
+@mixin padding(
+  $top: initial,
+  $right: initial,
+  $bottom: initial,
+  $left: initial
+) {
+  padding-left: $left;
+  padding-right: $right;
+  padding-top: $top;
+  padding-bottom: $bottom;
 }
-// use: @include square(2rem);
+//-------------------margin----------------------------------//
+@mixin margin(
+  $top: initial,
+  $right: initial,
+  $bottom: initial,
+  $left: initial
+) {
+  margin-left: $left;
+  margin-right: $right;
+  margin-top: $top;
+  margin-bottom: $bottom;
+}
+
+//-------------------card----------------------------------//
+@mixin card-f($flex: false) {
+  width: 100%;
+  overflow: hidden;
+  border-collapse: collapse;
+  @content;
+  @if $flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+//-------------------no select text----------------------------------//
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+//-------------------pseudo----------------------------------//
+@mixin pseudo($position: absolute, $content: "", $display: block) {
+  content: $content;
+  display: $display;
+  @content;
+  @if $display {
+    position: $position;
+  }
+}
+
+//-------------------before----//
+@mixin before($position: absolute, $content: "", $display: block) {
+  &::before {
+    @include pseudo($content, $position, $display) {
+      @content;
+    }
+  }
+}
+
+//-------------------after-----//
+@mixin after($position: absolute, $content: "", $display: block) {
+  &::after {
+    @include pseudo($content, $position, $display) {
+      @content;
+    }
+  }
+}
+//-------------------Responsive ratio----------------------------------//
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + "%");
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+.ratio-16-9 {
+  @include responsive-ratio(16, 9);
+}
+//-------------------triangles----------------------------------//
+@mixin css-triangle(
+  $color,
+  $direction,
+  $size: 6px,
+  $position: absolute,
+  $round: false
+) {
+  @include pseudo($position: $position);
+  width: 0;
+  height: 0;
+  @if $round {
+    border-radius: 3px;
+  }
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round($size / 2.5);
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round($size / 2.5);
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
+}
+
+//-------------------placeholder----------------------------------//
+@mixin placeholder($tag: input) {
+  // &.placeholder {
+  //   @content;
+  // }
+  &:-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-#{$tag}-placeholder {
+    @content;
+  }
+  &::-webkit-#{$tag}-placeholder {
+    @content;
+  }
+}
+
+//-------------------Truncate----------------------------------//
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -3,20 +3,22 @@
 .bg {
   @each $key, $value in $notifiers {
     &-#{$key} {
-      background: $value;
+      background: var(--#{$key});
       &-t {
-        background: $value;
-        color: white;
+        // background: $value;
+        background: var(--#{$key});
+        color: var(--text-white);
       }
     }
   }
 
   @each $key, $value in $colors {
     &-#{$key} {
-      background: $value;
+      background: var(--#{$key});
       &-t {
-        background: $value;
-        color: white;
+        // background: $value;
+        background: var(--#{$key});
+        color: var(--text-white);
       }
     }
   }

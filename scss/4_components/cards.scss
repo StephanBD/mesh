@@ -7,13 +7,13 @@
   // }
   // background-color: white;
 
-  // height: fit-content;
+  height: fit-content;
   // height: min-content;
   overflow: hidden;
   border-collapse: collapse;
 
   // flex ------------------
-  &-flex{
+  &-flex {
     @extend .card;
     display: flex;
     flex-direction: column;
@@ -25,13 +25,17 @@
     height: auto;
   }
   & .head {
-    font-size: $paragraph + 0.25;
+    // font-size: $paragraph + 0.25;
     font-weight: 700;
     text-align: center;
   }
   & .body {
-    font-size: $paragraph;
+    // font-size: $paragraph;
     // height: 100%;
+    &-m {
+      margin-top: $margin;
+      margin-bottom: $margin;
+    }
   }
   & .footer {
     // margin: auto ;
@@ -41,7 +45,17 @@
     // font-style: italic;
     // background-color: red;
   }
-  &-flex{
+  // & &-img {
+  //   @each $key, $value in $numbers {
+  //     &-#{$key} {
+  //       text-align: center;
+  //       & > img {
+  //         height: #{$key}rem;
+  //       }
+  //     }
+  //   }
+  // }
+  &-flex {
     @extend .card;
     display: flex;
     flex-direction: column;

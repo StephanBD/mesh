@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Document</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous"/><link rel="stylesheet" href="css/main.css"/></head></html><body><div class="bg-dark-t"><div class="content-m flex between"><a href="/">Index</a><a href="/forms.html">forms</a><a href="/aside.html">aside</a><a href="/aside2.html">aside2</a><a href="/navbars.html">navbars</a><a href="/darkmode.html">darkmode</a></div></div><h1 class="mbottom-2 t-center">Dynamic Aside 2</h1><div class="nav-p-l nav-p-r" id="body"><div class="sidebar-left shadow" id="navbar-left"><div class="nav bg-gray-dark-t"><li class="nav__logo"><span class="nav__logo-text">Bedimcode</span></li><ul class="nav__list"><li class="nav__link"><i class="bx bx-grid-alt nav__icon"></i><span class="nav__text">Footer</span></li></ul></div></div><div class="sidebar-right shadow" id="navbar-right"><div class="nav bg-light"><li class="nav__logo"><span class="nav__logo-text">Bedimcode</span></li><ul class="nav__list"><li class="nav__link"><i class="bx bx-grid-alt nav__icon"></i><span class="nav__text">Footer</span></li></ul></div></div><div class="content-a"><h2>content</h2><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam hic alias dicta perspiciatis suscipit ullam ex animi, neque ad odio consequuntur illo perferendis obcaecati omnis facilis quasi dolorum nesciunt eaque.</p><p class="gap-row"><span class="nav__toggle" id="nav-toggle-left"><i class="fas fa-long-arrow-alt-left"></i></span><span>left</span></p><p class="gap-row"><span>right</span><span class="nav__toggle" id="nav-toggle-right"><i class="fas fa-long-arrow-alt-right"></i></span></p></div></div><script type="text/javascript">const showMenu = (toggleId, navbarId, to) => {
+  const
+    toggle = document.getElementById(toggleId),
+    navbar = document.getElementById(navbarId),
+    bodypadding = document.getElementById("body")
+  if (toggle && navbar) {
+    toggle.addEventListener("click", () => {
+      console.log("click");
+      navbar.classList.toggle("show")
+      bodypadding.classList.toggle(to)
+    })
+  }
+}
+showMenu("nav-toggle-right", "navbar-right", "expand-right")
+showMenu("nav-toggle-left", "navbar-left", "expand-left")</script><footer class="bg-black-t m-top-3"><button class="btn-center d-block bg-primary t-gray-light round" id="toggledark"> <i class="fas fa-moon"></i></button></footer><script type="text/javascript">// Apply the cached theme on reload
+const theme = localStorage.getItem("theme");
+if (theme) {
+  // body.classList.add(theme);
+  document.body.classList.toggle(theme);
+}
+// Select the button
+const darkBtn = document.querySelector("#toggledark");
+// Listen for a click on the button
+darkBtn.addEventListener("click", function () {  switchTheme("dark-theme");});
+function switchTheme(themeName) {
+  document.body.classList.toggle(themeName);
+   if (!theme) {
+     localStorage.setItem("theme", "dark-theme");
+   } else {
+     localStorage.removeItem("theme");
+   }
+}</script></body>

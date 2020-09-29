@@ -1,0 +1,142 @@
+extend head/_link.pug
+block contenidos
+  h1.t-center Index  
+    //- include head/_link.pug
+  .full-w.bg-dark-t
+    .content.m-x-a.flex-row-center.between.place-center-stretch
+      h3 Title
+      ul.flex-row-center.hide-down-t.right.gap-x
+        li.flex.btn Home
+        li.flex.btn About
+        li(style="width: 70px; height: 30px; ")
+          .t-center.flip_container-full
+            .flip-v
+              .back-v.bg-dark-t Face B
+              .front.bg-dark-dark-t Face A
+
+  //------------------------ hero
+  .bg-dark.p-y-2
+    .content.m-a.full.flex-column.center-v
+      .bg-light.w-600.shadow-in.p-2
+        h1 Title
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit cumque consequatur distinctio magni beatae. Aspernatur sed nemo, tempore itaque molestias cupiditate, voluptatibus magni ea illo perspiciatis consequatur commodi. Quis, beatae.
+        button.btn.bg-dark-t CTA
+
+  //------------------------
+  .content.m-a.col.col-2.gap
+    div
+      h1 More
+      img( src="https://via.placeholder.com/500x220" class="m-y")
+      img( src="https://via.placeholder.com/500x220" class="m-y")
+      img( src="https://via.placeholder.com/500x220" class="m-y")
+      progress( value="75" max="100")
+
+    .bg-dark.t-white
+      .col.col--1-2.gap-2.stretch.m
+        img( src="https://via.placeholder.com/150" class="round")
+        ul  
+          li.h4 Lorem, ipsum dolor.
+          li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, aspernatur!
+          li.gap-row-between 
+            i.fas.fa-users 
+            i.fas.fa-users 
+
+      .col.col--1-2.gap-2.stretch.m
+        img( src="https://via.placeholder.com/150" class="round")
+        ul  
+          li.h4 Lorem, ipsum dolor.
+          li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, aspernatur!
+          li.gap-row-between 
+            i.fas.fa-users 
+            i.fas.fa-users 
+
+      .col.col--1-2.gap-2.stretch.m
+        img( src="https://via.placeholder.com/150" class="round")
+        ul  
+          li.h4 Lorem, ipsum dolor.
+          li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, aspernatur!
+          li.gap-row-between 
+            i.fas.fa-users 
+            i.fas.fa-users 
+
+      .col.col--1-2.gap-2.stretch.m
+        img( src="https://via.placeholder.com/150" class="round")
+        ul  
+          li.h4 Lorem, ipsum dolor.
+          li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, aspernatur!
+          li.gap-row-between 
+            i.fas.fa-users 
+            i.fas.fa-users
+
+  //------------------------
+  .bg-divided.p-y-2
+    .content.m-a-md.m-a.full-h.flex-column.center-v
+      .bg-light.w-600.shadow.p-2
+        h1 Title
+        p.m-y Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore iste at eveniet reiciendis quos voluptatem animi tenetur? Tenetur quae nam obcaecati. Consequuntur unde culpa eaque ipsa quod dolor voluptates itaque.
+        button.bg-success CTA
+
+  //--------------------------------------
+  .bg-light
+    .content.m-a-md.m-a.full-h.flex-column.center-v.h-200
+      li.flip_container-full
+        .flip-v
+          .front.p.bg-dark-t
+            h3.t-center-tb Heading
+          .back-v.p.bg-dark-t
+            ul
+              li
+                i.fas.fa-check.mr-r 
+                | asd
+
+  //--------------------------------------
+  .content.col.col-2.m-x-a.m-y-2.gap
+    .flip_container.h-200
+      .flip-h
+        .front.p.bg-dark-t
+          h3.t-center-tb Heading 1
+        .back-h.p.bg-dark-t
+          ul  
+            li
+              i.fas.fa-check.mr-r 
+              | item 
+
+    .flip_container.h-300
+      .flip-v
+        .front.p.bg-dark-t
+          h3.t-center-tb Heading 2
+        .back-v.p.bg-dark-t
+          ul  
+            li
+              i.fas.fa-check.mr-r 
+              | item 
+
+
+  //--------------------------------------
+  footer.bg-dark.p-y
+    .content.col.col-4.m-x-a.p-y-3
+      .t-white  col-item-2
+        ul.gap-col-between-2
+          li.gap-row-between-2
+            li.fas.fa-users.t-white
+            li.fas.fa-users
+            li.fas.fa-users
+      .t-white
+        ul
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+      .t-white
+        ul
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+      .t-white
+        ul
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor.
+          li Lorem, ipsum dolor. 
+

@@ -5,56 +5,77 @@
 }
 
 //-------------------position absolute: dropdown-----------------------------//
+// put it in the father
 .relative {
   position: relative;
 }
-.absolute {
+
+@mixin absolute($where: topLeftRightBottom) {
   position: absolute;
-  // min-width: max-content;
-  //----------outside the relative objecte------------//
-  &-right {
-    @extend .absolute;
+  width: fit-content;
+
+  @if $where == top {
     top: 0;
-    left: 100%;
-    transform: translate(0, 0);
-  }
-  &-left {
-    @extend .absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-  }
-  &-top {
-    @extend .absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    // transform: translateY(-100%);
-  }
-  // bottom and center
-  &-bottom {
-    @extend .absolute;
-    top: 100%;
     left: 50%;
     transform: translate(-50%, 0);
   }
-}
-
-//-------------------breakpoints----------------------------------//
-.bp-movile {
-  @include to($md) {
-    display: block;
-    width: 100%;
-    position: static;
-    transform: translate(0, 0);
+  @if $where == bottom {
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+  @if $where == left {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+  }
+  @if $where == right {
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, -50%);
+  }
+  @if $where == center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
+.absolute {
+  // position: absolute;
+  @include absolute();
+
+  &-center {
+    @include absolute(center);
+  }
+  &-right {
+    @include absolute(right);
+  }
+  &-left {
+    @include absolute(left);
+  }
+  // top and center
+  &-top {
+    @include absolute(top);
+  }
+  // bottom and center
+  &-bottom {
+    @include absolute(bottom);
+  }
+}
+
+// //-------------------breakpoints----------------------------------//
+// .bp-movile {
+//   @include to($md) {
+//     display: block;
+//     width: 100%;
+//     position: static;
+//     transform: translate(0, 0);
+//   }
+// }
+
 //-------------------hide----------------------------------//
 .hide {
-  display: none;
-
-  
   &-movile,
   &-m {
     @include from($sm) {
@@ -94,44 +115,48 @@
     }
   }
 }
+.hide {
+  display: none;
+}
 
 //-----------------------sticky-----------------------//
-.sticky {
+@mixin sticky($where) {
   position: -webkit-sticky;
   position: sticky;
-  // top: 50%;
-  top: 0;
-  &-bottom,
-  &-b {
-    @extend .sticky;
+  @if $where == top {
+    top: 0;
+  }
+  @if $where == bottom {
     top: 100%;
     transform: translate(0, -100%);
   }
 }
 
+.sticky {
+  @include sticky(top);
 
-
-//-------------------after----------------------------------//
-.after {
-  &::after {
-    content: "";
-    position: absolute;
-    background-color: red;
-    width: 100%;
-    height: 100%;
-    display: block;
+  &-bottom,
+  &-b {
+    @include sticky(bottom);
   }
 }
 
 //-------------------blur----------------------------------//
+@mixin blur($size) {
+  filter: blur($size);
+  -webkit-filter: blur($size);
+}
+@mixin blur-bg($size) {
+  backdrop-filter: ($size);
+  -webkit-backdrop-filter: ($size);
+}
 .blur {
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
+  @include blur(2px);
   &-bg {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    @include blur-bg(2px);
   }
 }
+
 //-------------------display----------------------------------//
 .d-block {
   display: block;
@@ -147,17 +172,79 @@
 }
 
 //-------------------border line----------------------------------//
-@mixin border($px, $color) {
-  border: $px solid $color;
-}
 .border {
-  @include border(1px, $grey-dark);
+  border: 1px solid $gray-dark;
   &-2 {
-    @include border(2px, $grey-dark);
+    border: 2px solid $gray-dark;
   }
   &-3 {
-    @include border(3px, $grey-dark);
+    border: 3px solid $gray-dark;
   }
 }
 
+//-------------------img width and height-------------------//
+.img {
+  @each $num in $number {
+    &-w#{$num} {
+      width: #{$num}px;
 
+      &-center,
+      &-c {
+        width: #{$num}px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+
+  @each $num in $number {
+    &-h#{$num} {
+      height: #{$num}px;
+      &-right,
+      &-r {
+        height: #{$num}px;
+        display: block;
+
+        margin-right: auto;
+      }
+      &-center,
+      &-c {
+        height: #{$num}px;
+        display: block;
+
+        margin-right: auto;
+        margin-left: auto;
+      }
+      &-left,
+      &-l {
+        height: #{$num}px;
+        display: block;
+
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+// image tag as background----------
+@mixin container-img() {
+  overflow: hidden;
+  position: relative;
+  z-index: var(--z-normal);
+  & > img:first-child {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // right: 0;
+    // bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+.container-img {
+  @include container-img;
+}

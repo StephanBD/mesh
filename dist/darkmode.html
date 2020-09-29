@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Document</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous"/><link rel="stylesheet" href="css/main.css"/></head></html><body><div class="bg-dark-t"><div class="content-m flex between"><a href="/">Index</a><a href="/forms.html">forms</a><a href="/aside.html">aside</a><a href="/aside2.html">aside2</a><a href="/navbars.html">navbars</a><a href="/darkmode.html">darkmode</a></div></div><h1 class="mbottom-2 t-center">Dark mode</h1><div class="content-m bg-grey p"><button class="btn-center d-block bg-info round" id="toggle">Change Colors</button><h2>background colors</h2><div class="col-6 gap"><div class="h-150 full shadow  bg-primary"> </div><div class="h-150 full shadow  bg-secondary"> </div><div class="h-150 full shadow  bg-success"> </div><div class="h-150 full shadow  bg-info"> </div><div class="h-150 full shadow  bg-warning"> </div><div class="h-150 full shadow  bg-danger"> </div><div class="h-150 full shadow  bg-light"> </div><div class="h-150 full shadow  bg-gray-light"> </div><div class="h-150 full shadow  bg-gray"> </div><div class="h-150 full shadow  bg-gray-dark"> </div><div class="h-150 full shadow  bg-dark"> </div></div><h2>text colors</h2><div class="p" style="background:#999;"><p class="t-text-white"> t-text-white    </p><p class="t-text-color"> t-text-color    </p><p class="t-title-color"> t-title-color    </p><p class="t-link-color"> t-link-color    </p><p class="t-primary"> t-primary </p><p class="t-secondary"> t-secondary </p><p class="t-success"> t-success </p><p class="t-info"> t-info </p><p class="t-warning"> t-warning </p><p class="t-danger"> t-danger </p><p class="t-light"> t-light </p><p class="t-gray-light"> t-gray-light </p><p class="t-gray"> t-gray </p><p class="t-gray-dark"> t-gray-dark </p><p class="t-dark"> t-dark </p></div><h2>image</h2><img src="https://www.dejavu-psychics.com/wp-content/uploads/2015/11/rainbow-colors-image.jpg"/><div class="border-3">xxx</div></div><div class="content-m bg-grey p"><h2>Javascript code</h2><pre class="bg-grey">// Select the button
+const button = document.querySelector("#toggle");
+// Listen for a click on the button
+button.addEventListener("click",  function() {
+  document.body.classList.toggle("dark-theme");
+  localStorage.getItem("theme")
+    ? localStorage.removeItem("theme")
+    : localStorage.setItem("theme", "dark-theme") 
+});</pre><h4>Local storage</h4><pre class="bg-grey">// Apply the cached theme on reload
+const theme = localStorage.getItem("theme");
+if (theme) {
+  document.body.classList.toggle(theme);
+}</pre></div><script type="text/javascript">// Select the button
+const toggle = document.querySelector("#toggle");
+// Listen for a click on the button
+toggle.addEventListener("click",  function() {
+  document.body.classList.toggle("dark-theme");
+  localStorage.getItem("theme")
+    ? localStorage.removeItem("theme")
+    : localStorage.setItem("theme", "dark-theme") 
+});</script><footer class="bg-black-t m-top-3"><button class="btn-center d-block bg-primary t-gray-light round" id="toggledark"> <i class="fas fa-moon"></i></button></footer><script type="text/javascript">// Apply the cached theme on reload
+const theme = localStorage.getItem("theme");
+if (theme) {
+  // body.classList.add(theme);
+  document.body.classList.toggle(theme);
+}
+// Select the button
+const darkBtn = document.querySelector("#toggledark");
+// Listen for a click on the button
+darkBtn.addEventListener("click", function () {  switchTheme("dark-theme");});
+function switchTheme(themeName) {
+  document.body.classList.toggle(themeName);
+   if (!theme) {
+     localStorage.setItem("theme", "dark-theme");
+   } else {
+     localStorage.removeItem("theme");
+   }
+}</script></body>

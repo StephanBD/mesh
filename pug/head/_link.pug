@@ -1,0 +1,36 @@
+include _head.pug
+include _mixins.pug
+
+body
+  div.bg-dark-t
+    div.content-m.flex.between
+      a(href="/") Index
+      a(href="/forms.html") forms
+      a(href="/aside.html") aside
+      a(href="/aside2.html") aside2
+      a(href="/navbars.html") navbars
+      a(href="/darkmode.html") darkmode
+  block contenidos
+  footer.bg-black-t.m-top-3
+    button#toggledark.btn-center.d-block.bg-primary.t-gray-light.round 
+      i.fas.fa-moon
+  //-=====================================
+  script(type="text/javascript")
+    | // Apply the cached theme on reload
+    | const theme = localStorage.getItem("theme");
+    | if (theme) {
+    |   // body.classList.add(theme);
+    |   document.body.classList.toggle(theme);
+    | }
+    | // Select the button
+    | const darkBtn = document.querySelector("#toggledark");
+    | // Listen for a click on the button
+    | darkBtn.addEventListener("click", function () {  switchTheme("dark-theme");});
+    | function switchTheme(themeName) {
+    |   document.body.classList.toggle(themeName);
+    |    if (!theme) {
+    |      localStorage.setItem("theme", "dark-theme");
+    |    } else {
+    |      localStorage.removeItem("theme");
+    |    }
+    | }

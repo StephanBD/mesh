@@ -1,3 +1,35 @@
+//-------------------flex----------------------------------//
+@mixin flex-dcia(
+  $flex-direction: row,
+  $justify-content: start,
+  $align-items: start,
+  $justify-items: start,
+  $align-content: stretch,
+  $flex-wrap: wrap
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  justify-items: $justify-items;
+  align-content: $align-content;
+  flex-wrap: $flex-wrap;
+  @content;
+}
+@mixin flex-item(
+  $order: initial,
+  $flex-basis: content,
+  // $flex: auto,
+  $flex-grow: 0,
+  $flex-shrink: 1
+) {
+  order: $order;
+  flex-basis:  $flex-basis;
+  // flex: $flex;
+  flex-grow: $flex-grow;
+  flex-shrink: $flex-shrink;
+  @content;
+}
 
 //==========================flex==========================//
 .flex {
@@ -12,16 +44,20 @@
     @extend .flex;
     flex-direction: row;
     &-center-h {
+      @extend .flex;
       justify-content: center;
     }
     &-top {
+      @extend .flex;
       align-items: flex-start;
     }
     &-center-v {
+      @extend .flex;
       align-content: center;
       // align-items: center;
     }
     &-bottom {
+      @extend .flex;
       align-items: flex-end;
     }
     &-center {
@@ -75,14 +111,29 @@
   }
 }
 
-// put footer always at the bottom
-.body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+/* 
 
-}
-.main-content {
-  height: 100%;
-}
+// container
+
+display: 
+flex-wrap: 
+flex-direction: 
+align-items: 
+justify-content: 
+justify-items: 
+align-content: 
+
+
+// children
+
+order: default is 0
+flex-grow: 0
+flex-shrink: 1
+flex-basis: auto, fill, max-content, min-content, fit-content, 20px, content
+flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+align-self: auto | flex-start | flex-end | center | baseline | stretch;
+
+
+
+
+*/

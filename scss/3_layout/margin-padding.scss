@@ -4,20 +4,23 @@
 
 @mixin marginData($mop, $direccion) {
   @each $dir in $direccion {
-    #{$mop}-#{$dir}: $margin;
+    #{$mop}-#{$dir}: $margin ;
   }
   @each $key, $value in $multipliers {
     &#{$key},
     &-#{$key} {
       @each $dir in $direccion {
+        #{$mop}-#{$dir}: $margin ;
+        @include from($sm){
         #{$mop}-#{$dir}: $margin * $value;
+        }
       }
     }
   }
 }
 
 .m {
-  margin: $margin;
+  margin: $margin ;
 
   &-a {
     margin: auto;
@@ -39,7 +42,7 @@
   }
 
   @each $dir in $directions {
-    &-#{$dir} {
+    &-#{$dir}, &#{$dir} {
       margin-#{$dir}: $margin;
 
       @each $key, $value in $multipliers {
@@ -61,7 +64,7 @@
 }
 
 .p {
-  padding: $padding / 2;
+  padding: $padding ;
 
   &-a {
     padding: auto;
@@ -77,7 +80,10 @@
 
   @each $key, $value in $multipliers {
     &-#{$key} {
+      padding: $padding ;
+      @include from($sm){
       padding: $padding * $value;
+      }
     }
   }
 

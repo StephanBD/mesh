@@ -1,3 +1,30 @@
+@mixin btn($color: initial, $width: initial, $height: initial) {
+  background-color: inherit;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  @if $width {
+    display: block;
+
+    padding-left: $width;
+    padding-right: $width;
+    @if $height {
+      padding-top: $height;
+      padding-bottom: $height;
+    } @else {
+      padding-top: $width;
+      padding-bottom: $width;
+    }
+  }
+
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+}
+
 //-------------------Buttons----------------------------------//
 .button,
 .btn,
@@ -5,44 +32,47 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
+  // @include btn();
   padding: 5px $padding;
-  font-weight: 700;
-  letter-spacing: 0.1rem;
+  // letter-spacing: 0.1rem;
   text-decoration: none;
   border: 0;
   cursor: pointer;
+  // display: block;
+  outline: 0;
 
   &:hover,
   &:focus {
-    // border-color: $grey-dark;
+    border-color: var(--gray-dark);
     outline: 0;
-    // background-color: $grey-light;
+    // background-color: #0000006b;
+    // color: initial;
+    opacity: 0.8;
   }
 
   &:active {
     outline: 0;
   }
 }
-// .btn,
-// .button {
-//   &-l {
-//     background-color: $grey-light;
-//     color: $black;
-//   }
-//   &-d {
-//     background-color: $black;
-//     color: $grey-light;
-//   }
-// }
 
 .btn {
   // padding: 0.6em 0.8em 0.8em;
-  border: none;
-  border-radius: 5px;
+
+  // border-radius: 5px;
   // box-shadow: inset 0 -0.2em 8px -4px rgba(0, 0, 0, 0.2);
   // box-shadow: 0 0.2em 5px rgba(0, 0, 0, 0.2);
   // outline: none;
   transition: 0.2s;
+  &-center {
+    @extend .btn;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+button,
+.btn {
+  @include noselect;
 }
 
 .btn:active {
